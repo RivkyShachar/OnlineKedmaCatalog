@@ -121,8 +121,10 @@
                         @Html.DisplayFor(modelItem => item.Description)
                     </td>
                     <td>
-                        <img src="@item.ImageUrl" alt="@item.Name" style="max-width: 70px; max-height: 70px;" />
-                    </td>
+                        <div class="featured__item__pic set-bg" data-setbg="@Url.Content(@item.ImageUrl)">
+
+@*                        <img src="@item.Pizza.ImageUrl" alt="@item.Name" style="max-width: 70px;" />
+*@                    </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Category.Name)
                     </td>
