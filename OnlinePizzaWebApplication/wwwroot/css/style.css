@@ -1081,16 +1081,6 @@ ol {
   Sidebar
 -----------------------*/
 
-
-
-.my_sidebar {
-	left: 0;
-}
-
-[dir="rtl"] .my_sidebar {
-	left: auto;
-	right: 0;
-}
 .sidebar__item {
 	margin-bottom: 35px;
 	left: 0;
