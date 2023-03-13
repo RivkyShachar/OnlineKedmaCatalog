@@ -89,7 +89,7 @@
         <dd>
             <br /><b>Details -----</b>
         </dd>
-        @{decimal subtotal = 0M;}
+        @{float subtotal = 0;}
         @foreach (OrderDetail orderDetail in ViewBag.OrderDetailsList)
         {
             <dt>
@@ -99,10 +99,10 @@
                 @Html.DisplayFor(model => orderDetail.Pizza.Name)
             </dd>
             <dt>
-                @Html.DisplayNameFor(model => orderDetail.Amount)
+                @Html.DisplayNameFor(model => orderDetail.AmountBoxes)
             </dt>
             <dd>
-                @Html.DisplayFor(model => orderDetail.Amount)
+                @Html.DisplayFor(model => orderDetail.AmountBoxes)
             </dd>
             <dt>
                 @Html.DisplayNameFor(model => orderDetail.Price)
@@ -114,7 +114,9 @@
                 Sub Total
             </dt>
             <dd>
-                @{subtotal = orderDetail.Price * orderDetail.Amount;}
+                @{
+                    subtotal = orderDetail.Price * orderDetail.AmountBoxes;
+                }
                 @subtotal
             </dd>
             <dt>

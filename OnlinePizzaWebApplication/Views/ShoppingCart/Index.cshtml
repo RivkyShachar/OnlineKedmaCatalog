@@ -98,7 +98,7 @@
                                             @line.Pizza.Barcode
                                         </td>
                                         <td class="text-center">
-                                            <a class="btn btn-default" asp-action="RemoveFromShoppingCart" asp-route-pizzaId="@line.Pizza.Id"><b>-</b></a><b>@line.Amount</b><a class="btn btn-default" asp-action="AddToShoppingCart" asp-route-pizzaId="@line.Pizza.Id"><b>+</b></a>
+                                            <a class="btn btn-default" asp-action="RemoveFromShoppingCart" asp-route-pizzaId="@line.Pizza.Id"><b>-</b></a><b>@line.AmountBoxes</b><a class="btn btn-default" asp-action="AddToShoppingCart" asp-route-pizzaId="@line.Pizza.Id"><b>+</b></a>
                                         </td>
 @*                                        <td class="text-center">
                                             <form asp-action="UpdateShoppingCart" asp-route-pizzaId="@line.Pizza.Id">
@@ -120,9 +120,18 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="shoping__cart__btns">
-                        <a href="@Url.Action("Index", "Home")" class="primary-btn cart-btn">CONTINUE SHOPPING</a>
-                        <a href="@Url.Action("Index", "ShoppingCart")" class="primary-btn cart-btn cart-btn-right">Upadate Cart </a>
+                        <a href="@Url.Action("Index", "Home")" class="primary-btn cart-btn">המשך קנייה</a>
+                        <a href="@Url.Action("Index", "ShoppingCart")" class="primary-btn cart-btn cart-btn-right">עדכון עגלה </a>
                     </div>
+                <form method="post" action="@Url.Action("GeneratePdf", "ShoppingCart")">
+                    <button type="submit">Download PDF</button>
+                </form>
+                <form method="post" action="@Url.Action("SendEmailWithPdf", "ShoppingCart")">
+                    <label for="email">Email address:</label>
+                    <input type="email" name="email" required>
+                    <button type="submit">Send Email</button>
+                </form>
+
                 </div>
         </div>
     </section>

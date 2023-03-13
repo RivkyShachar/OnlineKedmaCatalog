@@ -22,7 +22,7 @@ namespace OnlinePizzaWebApplication.Repositories
         public async Task CreateOrderAsync(Order order)
         {
             order.OrderPlaced = DateTime.Now;
-            decimal totalPrice = 0M;
+            float totalPrice = 0;
 
             var shoppingCartItems = _shoppingCart.ShoppingCartItems;
 
@@ -30,13 +30,14 @@ namespace OnlinePizzaWebApplication.Repositories
             {
                 var orderDetail = new OrderDetail()
                 {
-                    Amount = shoppingCartItem.Amount,
+                    AmountBoxes = shoppingCartItem.AmountBoxes,
+                    AmountSingles= shoppingCartItem.AmountSingles,
                     PizzaId = shoppingCartItem.Pizza.Id,
                     Order = order,
-                    Price = shoppingCartItem.Pizza.Barcode,
+                    Price = shoppingCartItem.Pizza.Price,
                     
                 };
-                totalPrice += orderDetail.Price * orderDetail.Amount;
+                totalPrice += orderDetail.Price * orderDetail.AmountBoxes;
                 _context.OrderDetails.Add(orderDetail);
             }
 

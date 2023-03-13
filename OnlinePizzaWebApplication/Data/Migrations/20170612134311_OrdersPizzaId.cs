@@ -13,7 +13,7 @@ namespace OnlinePizzaWebApplication.Migrations
                 table: "OrderDetails");
 
             migrationBuilder.DropColumn(
-                name: "PieId",
+                name: "AmountSingles",
                 table: "OrderDetails");
 
             migrationBuilder.AlterColumn<int>(
@@ -45,7 +45,7 @@ namespace OnlinePizzaWebApplication.Migrations
                 oldClrType: typeof(int));
 
             migrationBuilder.AddColumn<int>(
-                name: "PieId",
+                name: "AmountSingles",
                 table: "OrderDetails",
                 nullable: false,
                 defaultValue: 0);

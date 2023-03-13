@@ -9,6 +9,6 @@ namespace OnlinePizzaWebApplication.ViewModels
     public class ShoppingCartViewModel
     {
         public ShoppingCart ShoppingCart { get; set; }
-        public decimal ShoppingCartTotal { get; set; }
+        public float ShoppingCartTotal { get; set; }
     }
 }

@@ -23,7 +23,7 @@ namespace OnlinePizzaWebApplication.Migrations
                     FirstName = table.Column<string>(maxLength: 50, nullable: false),
                     LastName = table.Column<string>(maxLength: 50, nullable: false),
                     OrderPlaced = table.Column<DateTime>(nullable: false),
-                    OrderTotal = table.Column<decimal>(nullable: false),
+                    OrderTotal = table.Column<float>(nullable: false),
                     PhoneNumber = table.Column<string>(maxLength: 25, nullable: false),
                     State = table.Column<string>(maxLength: 10, nullable: true),
                     ZipCode = table.Column<string>(maxLength: 10, nullable: false)
@@ -39,13 +39,14 @@ namespace OnlinePizzaWebApplication.Migrations
                 {
                     OrderDetailId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Amount = table.Column<int>(nullable: false),
+                    AmountBoxes = table.Column<int>(nullable: false),
                     OrderId = table.Column<int>(nullable: false),
-                    PieId = table.Column<int>(nullable: false),
+                    AmountSingles = table.Column<int>(nullable: false),
                     PizzaId = table.Column<int>(nullable: true),
-                    Price = table.Column<decimal>(nullable: false)
+                    Price = table.Column<string>(nullable: false)
                 },
-                constraints: table =>
+
+        constraints: table =>
                 {
                     table.PrimaryKey("PK_OrderDetails", x => x.OrderDetailId);
                     table.ForeignKey(
