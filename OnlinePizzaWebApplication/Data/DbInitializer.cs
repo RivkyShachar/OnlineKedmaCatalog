@@ -57,9 +57,9 @@ namespace OnlinePizzaWebApplication.Data
 
         private static void SeedDatabase(AppDbContext _context, RoleManager<IdentityRole> _roleManager, UserManager<IdentityUser> _userManager)
         {
-            var cat1 = new Categories { Name = "Standard", Description = "The Bakery's Standard pizzas all year around." };
-            var cat2 = new Categories { Name = "Spcialities", Description = "The Bakery's Speciality pizzas only for a limited time." };
-            var cat3 = new Categories { Name = "News", Description = "The Bakery's New pizzas on the menu." };
+            var cat1 = new Categories { Name = "Standard" };
+            var cat2 = new Categories { Name = "Spcialities" };
+            var cat3 = new Categories { Name = "News" };
 
             var cats = new List<Categories>()
             {
