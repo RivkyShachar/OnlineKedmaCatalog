@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using OnlinePizzaWebApplication.Data;
+using OnlinePizzaWebApplication.Models;
 using OnlinePizzaWebApplication.Repositories;
 
 namespace OnlinePizzaWebApplication.Controllers
@@ -26,9 +28,9 @@ namespace OnlinePizzaWebApplication.Controllers
             return View(await _pizzaRepo.GetAllIncludedAsync());
         }
 
-        public IActionResult About()
+        public async Task<IActionResult> About()
         {
-            return View();
+            return View(await _pizzaRepo.GetAllIncludedAsync());
         }
 
         public IActionResult Contact()
@@ -39,6 +41,30 @@ namespace OnlinePizzaWebApplication.Controllers
         public IActionResult Error()
         {
             return View();
+        }
+
+        // GET: Pizzas/Create
+        public IActionResult Create()
+        {
+            ViewData["CategoriesId"] = new SelectList(_categoryRepo.GetAll(), "Id", "Name");
+            return View();
+        }
+
+        // POST: Pizzas/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("Id,Name,Price,Description,ImageUrl,CategoriesId")] Pizzas pizzas)
+        {
+            if (ModelState.IsValid)
+            {
+                _pizzaRepo.Add(pizzas);
+                await _pizzaRepo.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            ViewData["CategoriesId"] = new SelectList(_categoryRepo.GetAll(), "Id", "Name", pizzas.CategoriesId);
+            return View(pizzas);
         }
     }
 }
