@@ -16,6 +16,7 @@ namespace OnlinePizzaWebApplication.Models
         [StringLength(100, MinimumLength = 2)]
         [DataType(DataType.Text)]
         [Required]
+        [DisplayName("קטגוריה")]
         public string Name { get; set; }
 
         [DataType(DataType.MultilineText)]

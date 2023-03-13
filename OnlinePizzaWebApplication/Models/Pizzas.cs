@@ -19,25 +19,31 @@ namespace OnlinePizzaWebApplication.Models
         public int Id { get; set; }
 
         [DataType(DataType.Text)]
+        [DisplayName("שם המוצר")]
         public string Name { get; set; }
 
+        [DisplayName("ברקוד")]
         [Range(0, 1000)]
         [DataType(DataType.Currency)]
         public decimal Barcode { get; set; }
 
+        [DisplayName("משקל")]
         [DataType(DataType.Text)]
         public string Weight { get; set; }
 
         [DataType(DataType.MultilineText)]
+        [DisplayName("תאור המוצר")]
         public string Description { get; set; }
 
         [DataType(DataType.ImageUrl)]
+        [DisplayName("תמונה")]
         public string ImageUrl { get; set; }
 
         
         [DisplayName("Select Category")]
         public int CategoriesId { get; set; }
 
+        [DisplayName("קטגוריה")]
         public virtual Categories Category { get; set; }
 
         public virtual ICollection<PizzaIngredients> PizzaIngredients { get; set; }
