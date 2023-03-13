@@ -108,14 +108,14 @@
                 @Html.DisplayNameFor(model => orderDetail.Price)
             </dt>
             <dd>
-                    @orderDetail.Price.ToString("c")
+                    @orderDetail.Price
             </dd>
             <dt>
                 Sub Total
             </dt>
             <dd>
                 @{subtotal = orderDetail.Price * orderDetail.Amount;}
-                @subtotal.ToString("c")
+                @subtotal
             </dd>
             <dt>
                 <br />
@@ -128,7 +128,7 @@
             Total Price
         </dt>
         <dd>
-            @Model.OrderTotal.ToString("c")
+            @Model.OrderTotal
         </dd>
         
     </dl>
