@@ -9,7 +9,8 @@ namespace OnlinePizzaWebApplication.Models
     {
         public int ShoppingCartItemId { get; set; }
         public Pizzas Pizza { get; set; }
-        public int Amount { get; set; }
+        public int AmountBoxes { get; set; }
+        public int AmountSingles { get; set; }
         public string ShoppingCartId { get; set; }
     }
 }

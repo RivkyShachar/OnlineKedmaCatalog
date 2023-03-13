@@ -104,7 +104,7 @@
                     <th></th>
                 </tr>
             </thead>
-        <tbody>
+        <tbody dir="rtl">
             @foreach (var item in Model)
             {
                 <tr>
@@ -125,8 +125,11 @@
                         <img src="@item.ImageUrl" alt="@item.Name" style="max-width: 70px;" />
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Category.Name)
+                        <a href="@Url.Action("ListCategory", "Pizzas", new { categoryId = item.Category.Id })">
+                            @Html.DisplayFor(modelItem => item.Category.Name)
+                        </a>
                     </td>
+
                     <td>
                         <a asp-action="Edit" asp-route-id="@item.Id">עריכה</a> |
                         <a asp-action="Details" asp-route-id="@item.Id">פרטים</a> |

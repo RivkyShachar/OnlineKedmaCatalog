@@ -104,7 +104,7 @@ namespace OnlinePizzaWebApplication.Controllers
                 var pizzaList = await _context.Pizzas.Include(x => x.Category).Include(x => x.Reviews).Include(x => x.PizzaIngredients).OrderBy(x => x.Name)
                      .Where(p =>
                      p.Name.ToLower().Contains(searchString)
-                  || p.Barcode.ToString("c").ToLower().Contains(searchString)
+                  || p.Barcode.ToString().ToLower().Contains(searchString)
                   || p.Category.Name.ToLower().Contains(searchString)
                   || p.PizzaIngredients.Select(x => x.Ingredient.Name.ToLower()).Contains(searchString))
                     .ToListAsync();
@@ -237,7 +237,7 @@ namespace OnlinePizzaWebApplication.Controllers
                 var pizzaList = await _context.Pizzas.Include(x => x.Category).Include(x => x.Reviews).Include(x => x.PizzaIngredients).OrderBy(x => x.Name)
                     .Where(p =>
                      p.Name.ToLower().Contains(search)
-                  || p.Barcode.ToString("c").ToLower().Contains(search)
+                  || p.Barcode.ToString().ToLower().Contains(search)
                   || p.Category.Name.ToLower().Contains(search)
                   || p.PizzaIngredients.Select(x => x.Ingredient.Name.ToLower()).Contains(search)).ToListAsync();
 

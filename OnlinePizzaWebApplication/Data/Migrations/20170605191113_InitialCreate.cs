@@ -16,10 +16,13 @@ namespace OnlinePizzaWebApplication.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Description = table.Column<string>(nullable: true),
-                    Image = table.Column<string>(nullable: true),
+                    ImageUrl = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: true),
-                    Barcode = table.Column<double>(nullable: false),
+                    Barcode = table.Column<string>(nullable: false),
                     Weight = table.Column<string>(nullable: true),
+                    AmountInBox = table.Column<float>(nullable: true),
+                    Price = table.Column<float>(nullable: true),
+
                 },
                 constraints: table =>
                 {

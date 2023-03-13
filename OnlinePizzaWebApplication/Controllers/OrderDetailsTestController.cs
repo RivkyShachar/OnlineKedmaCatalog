@@ -57,7 +57,7 @@ namespace OnlinePizzaWebApplication.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("OrderDetailId,OrderId,PieId,Amount,Price")] OrderDetail orderDetail)
+        public async Task<IActionResult> Create([Bind("OrderDetailId,OrderId,AmountSingles,AmountBoxes,Price")] OrderDetail orderDetail)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +91,7 @@ namespace OnlinePizzaWebApplication.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("OrderDetailId,OrderId,PieId,Amount,Price")] OrderDetail orderDetail)
+        public async Task<IActionResult> Edit(int id, [Bind("OrderDetailId,OrderId,AmountBoxes,AmountSingles,Price")] OrderDetail orderDetail)
         {
             if (id != orderDetail.OrderDetailId)
             {

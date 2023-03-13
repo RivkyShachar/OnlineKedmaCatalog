@@ -15,7 +15,7 @@ namespace OnlinePizzaWebApplication.Migrations
                 {
                     ShoppingCartItemId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Amount = table.Column<int>(nullable: false),
+                    AmountBoxes = table.Column<int>(nullable: false),
                     PizzaId = table.Column<int>(nullable: true),
                     ShoppingCartId = table.Column<string>(nullable: true)
                 },

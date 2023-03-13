@@ -44,7 +44,7 @@ namespace OnlinePizzaWebApplication.Controllers
 
             if (selectedPizza != null)
             {
-                await _shoppingCart.AddToCartAsync(selectedPizza, amount);
+                await _shoppingCart.AddToCartAsync(selectedPizza, amount, amount);
             }
             return RedirectToAction("Index");
         }
@@ -66,7 +66,7 @@ namespace OnlinePizzaWebApplication.Controllers
 
             if (selectedPizza != null)
             {
-                await _shoppingCart.UpdateCartAsync(selectedPizza, amount);
+                await _shoppingCart.UpdateCartAsync(selectedPizza, amount, amount);
             }
             return RedirectToAction("Index");
         }

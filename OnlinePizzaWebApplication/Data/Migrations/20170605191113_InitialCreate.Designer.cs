@@ -29,7 +29,7 @@ namespace OnlinePizzaWebApplication.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<double>("Price");
+                    b.Property<float>("Price");
 
                     b.HasKey("Id");
 

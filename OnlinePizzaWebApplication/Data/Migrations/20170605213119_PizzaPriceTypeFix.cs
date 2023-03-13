@@ -9,20 +9,20 @@ namespace OnlinePizzaWebApplication.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterColumn<decimal>(
+            migrationBuilder.AlterColumn<string>(
                 name: "Barcode",
                 table: "Pizzas",
                 nullable: false,
-                oldClrType: typeof(double));
+                oldClrType: typeof(string));
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterColumn<double>(
+            migrationBuilder.AlterColumn<string>(
                 name: "Barcode",
                 table: "Pizzas",
                 nullable: false,
-                oldClrType: typeof(decimal));
+                oldClrType: typeof(string));
         }
     }
 }

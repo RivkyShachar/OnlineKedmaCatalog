@@ -66,20 +66,11 @@ namespace OnlinePizzaWebApplication.Data
                 cat1, cat2, cat3
             }; 
 
-            var piz1 = new Pizzas { Name = "מוצר א", Barcode = 70.00M, Weight="3 קג", Category = cat1, Description = "תיאור מוצר א", ImageUrl = "img/kedmaPic/IMG-20230312-WA0033.jpg" };
-            var piz2 = new Pizzas { Name = "Veggie", Barcode = 70.00M, Weight = "3 קג", Category = cat3, Description = "Veggie Pizza for vegitarians", ImageUrl = "img/kedmaPic/IMG-20230312-WA0034.jpg" };
-            var piz3 = new Pizzas { Name = "Hawaii", Barcode = 75.00M, Weight = "3 קג", Category = cat1, Description = "A nice tasting pizza from Hawaii.", ImageUrl = "img/kedmaPic/IMG-20230312-WA0035.jpg" };
-            var piz4 = new Pizzas { Name = "Margarita", Barcode = 65.00M, Weight = "3 קג", Category = cat1, Description = "A basic pizza for everyone.", ImageUrl = "img/kedmaPic/IMG-20230312-WA0036.jpg" };
-            var piz5 = new Pizzas { Name = "Kebab Special", Barcode = 85.00M, Weight = "3 קג", Category = cat2, Description = "A special pizza with kebab for the hungry one.", ImageUrl = "img/kedmaPic/IMG-20230312-WA0037.jpg" };
-            var piz6 = new Pizzas { Name = "Pescatore", Barcode = 80.00M, Weight = "3 קג", Category = cat1, Description = "A pizza with taste from the ocean.", ImageUrl = "img/kedmaPic/IMG-20230312-WA0038.jpg" };
-            var piz7 = new Pizzas { Name = "Barcelona", Barcode = 70.00M, Weight = "3 קג", Category = cat1, Description = "A pizza with taste from Spain, Barcelona", ImageUrl = "img/kedmaPic/IMG-20230312-WA0039.jpg" };
-            var piz8 = new Pizzas { Name = "Flying Jacob", Barcode = 89.00M, Weight = "3 קג", Category = cat2, Description = "Flying pizza from the sky, with taste of banana.", ImageUrl = "img/kedmaPic/IMG-20230312-WA0040.jpg" };
-            var piz9 = new Pizzas { Name = "Kentucky", Barcode = 69.00M, Weight = "3 קג", Category = cat3, Description = "A pizza from America with the taste of Kuntucky Chicken.", ImageUrl = "img/kedmaPic/IMG-20230312-WA0041.jpg" };
-            var piz10 = new Pizzas { Name = "La Carne", Barcode = 75.00M, Weight = "3 קג", Category = cat1, Description = "Italian pizza with lot's of delicious meat.", ImageUrl = "img/kedmaPic/IMG-20230312-WA0042.jpg" };
+            var piz1 = new Pizzas { Name = "מוצר א", Barcode = "123456", Weight="3 קג", Category = cat1, Description = "תיאור מוצר א", ImageUrl = "img/kedmaPic/IMG-20230312-WA0033.jpg" };
 
             var pizs = new List<Pizzas>()
             {
-                piz1, piz2, piz3, piz4, piz5, piz6, piz7, piz8, piz9, piz10
+                piz1
             };
 
             var user1 = new IdentityUser { UserName = "user1@gmail.com", Email = "user1@gmail.com" };
@@ -102,100 +93,22 @@ namespace OnlinePizzaWebApplication.Data
 
             var revs = new List<Reviews>()
             {
-                new Reviews { User = user1, Title ="Best Pizza with mushrooms", Description="I love this Pizza with mushrooms on it.", Grade=4, Date=DateTime.Now, Pizza = piz1 },
-                new Reviews { User = user2, Title ="Worst Pizza with mushrooms", Description="I hate this Pizza with mushrooms on it.", Grade=1, Date=DateTime.Now.AddDays(-1), Pizza = piz1 },
-                new Reviews { User = user2, Title ="Only Bland Vegetables", Description="Tasteless vegetables on this soggy Pizza.", Grade=1, Date=DateTime.Now, Pizza = piz2 },
-                new Reviews { User = user3, Title ="Great Veggie Pizza", Description="Good choice if you are a vegitarian.", Grade=5, Date=DateTime.Now.AddDays(-6), Pizza = piz2 },
-                new Reviews { User = user4, Title ="Amazing pineapples", Description="I love the taste of the pineapples on this pizza.", Grade=4, Date=DateTime.Now.AddDays(-4), Pizza = piz3 },
-                new Reviews { User = user1, Title ="Too simple", Description="Too simple pizza, for such a high price.", Grade=2, Date=DateTime.Now.AddDays(-2), Pizza = piz4 },
-                new Reviews { User = user5, Title ="Super Special", Description="Super special pizza, the best taste in the world!", Grade=5, Date=DateTime.Now.AddDays(-9), Pizza = piz5 },
+                new Reviews { User = user1, Title ="Too simple", Description="Too simple pizza, for such a high price.", Grade=2, Date=DateTime.Now.AddDays(-2), Pizza = piz1 },
+                new Reviews { User = user5, Title ="Super Special", Description="Super special pizza, the best taste in the world!", Grade=5, Date=DateTime.Now.AddDays(-9), Pizza = piz1 },
             };
 
             var ing1 = new Ingredients { Name = "Cheese" };
             var ing2 = new Ingredients { Name = "Flour" };
-            var ing3 = new Ingredients { Name = "Tomatoe sauce" };
-            var ing4 = new Ingredients { Name = "Lettuce" };
-            var ing5 = new Ingredients { Name = "Mushrooms" };
-            var ing6 = new Ingredients { Name = "Kebab" };
-            var ing7 = new Ingredients { Name = "Shrimp" };
-            var ing8 = new Ingredients { Name = "Pineapple" };
-            var ing9 = new Ingredients { Name = "Ham" };
-            var ing10 = new Ingredients { Name = "Broccoli" };
-            var ing11 = new Ingredients { Name = "Onions" };
-            var ing12 = new Ingredients { Name = "Olives" };
-            var ing13 = new Ingredients { Name = "Bananas" };
-            var ing14 = new Ingredients { Name = "Chicken" };
-            var ing15 = new Ingredients { Name = "Tomatoes" };
-            var ing16 = new Ingredients { Name = "Minced Meat" };
 
             var ings = new List<Ingredients>()
             {
-                ing1, ing2, ing3, ing4, ing5, ing6, ing7, ing8, ing9, ing10, ing11, ing12, ing13, ing14, ing15, ing16
+                ing1, ing2
             };
 
             var pizIngs = new List<PizzaIngredients>()
             {
                 new PizzaIngredients { Ingredient = ing1, Pizza = piz1 },
-                new PizzaIngredients { Ingredient = ing2, Pizza = piz1 },
-                new PizzaIngredients { Ingredient = ing3, Pizza = piz1 },
-                new PizzaIngredients { Ingredient = ing5, Pizza = piz1 },
-                new PizzaIngredients { Ingredient = ing9, Pizza = piz1 },
-
-                new PizzaIngredients { Ingredient = ing1, Pizza = piz2 },
-                new PizzaIngredients { Ingredient = ing2, Pizza = piz2 },
-                new PizzaIngredients { Ingredient = ing3, Pizza = piz2 },
-                new PizzaIngredients { Ingredient = ing4, Pizza = piz2 },
-                new PizzaIngredients { Ingredient = ing10, Pizza = piz2 },
-
-                new PizzaIngredients { Ingredient = ing1, Pizza = piz3 },
-                new PizzaIngredients { Ingredient = ing2, Pizza = piz3 },
-                new PizzaIngredients { Ingredient = ing3, Pizza = piz3 },
-                new PizzaIngredients { Ingredient = ing8, Pizza = piz3 },
-                new PizzaIngredients { Ingredient = ing9, Pizza = piz3 },
-
-                new PizzaIngredients { Ingredient = ing1, Pizza = piz4 },
-                new PizzaIngredients { Ingredient = ing2, Pizza = piz4 },
-                new PizzaIngredients { Ingredient = ing3, Pizza = piz4 },
-
-                new PizzaIngredients { Ingredient = ing1, Pizza = piz5 },
-                new PizzaIngredients { Ingredient = ing2, Pizza = piz5 },
-                new PizzaIngredients { Ingredient = ing3, Pizza = piz5 },
-                new PizzaIngredients { Ingredient = ing6, Pizza = piz5 },
-                new PizzaIngredients { Ingredient = ing4, Pizza = piz5 },
-                new PizzaIngredients { Ingredient = ing11, Pizza = piz5 },
-
-                new PizzaIngredients { Ingredient = ing1, Pizza = piz6 },
-                new PizzaIngredients { Ingredient = ing2, Pizza = piz6 },
-                new PizzaIngredients { Ingredient = ing3, Pizza = piz6 },
-                new PizzaIngredients { Ingredient = ing4, Pizza = piz6 },
-                new PizzaIngredients { Ingredient = ing7, Pizza = piz6 },
-
-                new PizzaIngredients { Ingredient = ing1, Pizza = piz7 },
-                new PizzaIngredients { Ingredient = ing2, Pizza = piz7 },
-                new PizzaIngredients { Ingredient = ing3, Pizza = piz7 },
-                new PizzaIngredients { Ingredient = ing5, Pizza = piz7 },
-                new PizzaIngredients { Ingredient = ing11, Pizza = piz7 },
-                new PizzaIngredients { Ingredient = ing12, Pizza = piz7 },
-
-                new PizzaIngredients { Ingredient = ing1, Pizza = piz8 },
-                new PizzaIngredients { Ingredient = ing2, Pizza = piz8 },
-                new PizzaIngredients { Ingredient = ing3, Pizza = piz8 },
-                new PizzaIngredients { Ingredient = ing5, Pizza = piz8 },
-                new PizzaIngredients { Ingredient = ing8, Pizza = piz8 },
-                new PizzaIngredients { Ingredient = ing13, Pizza = piz8 },
-
-                new PizzaIngredients { Ingredient = ing1, Pizza = piz9 },
-                new PizzaIngredients { Ingredient = ing2, Pizza = piz9 },
-                new PizzaIngredients { Ingredient = ing3, Pizza = piz9 },
-                new PizzaIngredients { Ingredient = ing14, Pizza = piz9 },
-                new PizzaIngredients { Ingredient = ing15, Pizza = piz9 },
-
-                new PizzaIngredients { Ingredient = ing1, Pizza = piz10 },
-                new PizzaIngredients { Ingredient = ing2, Pizza = piz10 },
-                new PizzaIngredients { Ingredient = ing3, Pizza = piz10 },
-                new PizzaIngredients { Ingredient = ing9, Pizza = piz10 },
-                new PizzaIngredients { Ingredient = ing16, Pizza = piz10 },
-
+                new PizzaIngredients { Ingredient = ing2, Pizza = piz1 }
             };
 
             var ord1 = new Order
@@ -210,17 +123,12 @@ namespace OnlinePizzaWebApplication.Data
                 PhoneNumber = "0705123456",
                 User = user1,
                 ZipCode = "43210",
-                OrderTotal = 370.00M,
+                OrderTotal = 370,
             };
-
-            var ord2 = new Order { };
-            var ord3 = new Order { };
 
             var orderLines = new List<OrderDetail>()
             {
-                new OrderDetail { Order=ord1, Pizza=piz1, Amount=2, Price=piz1.Barcode},
-                new OrderDetail { Order=ord1, Pizza=piz3, Amount=1, Price=piz3.Barcode},
-                new OrderDetail { Order=ord1, Pizza=piz5, Amount=3, Price=piz5.Barcode},
+                new OrderDetail { Order=ord1, Pizza=piz1, AmountBoxes=2}
             };
 
             var orders = new List<Order>()

@@ -239,7 +239,7 @@ namespace OnlinePizzaWebApplication.Migrations
 
                     b.Property<DateTime>("OrderPlaced");
 
-                    b.Property<decimal>("OrderTotal");
+                    b.Property<float>("OrderTotal");
 
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
@@ -272,7 +272,7 @@ namespace OnlinePizzaWebApplication.Migrations
 
                     b.Property<int>("PizzaId");
 
-                    b.Property<decimal>("Price");
+                    b.Property<float>("Price");
 
                     b.HasKey("OrderDetailId");
 
@@ -318,7 +318,7 @@ namespace OnlinePizzaWebApplication.Migrations
                         .IsRequired()
                         .HasMaxLength(100);
 
-                    b.Property<decimal>("Price");
+                    b.Property<float>("Price");
 
                     b.HasKey("Id");
 
@@ -362,7 +362,8 @@ namespace OnlinePizzaWebApplication.Migrations
                     b.Property<int>("ShoppingCartItemId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("Amount");
+                    b.Property<int>("AmountBoxes");
+                    b.Property<int>("AmountSingles");
 
                     b.Property<int?>("PizzaId");
 

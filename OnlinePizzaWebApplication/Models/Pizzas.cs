@@ -23,7 +23,7 @@ namespace OnlinePizzaWebApplication.Models
         public string Name { get; set; }
 
         [DisplayName("ברקוד")]
-        public decimal Barcode { get; set; }
+        public string Barcode { get; set; }
 
         [DisplayName("משקל")]
         [DataType(DataType.Text)]
@@ -37,6 +37,9 @@ namespace OnlinePizzaWebApplication.Models
         [DisplayName("תמונה")]
         public string ImageUrl { get; set; }
 
+        public float Price { get; set; }
+
+        public float AmountInBox { get; set; }
         
         [DisplayName("Select Category")]
         public int CategoriesId { get; set; }

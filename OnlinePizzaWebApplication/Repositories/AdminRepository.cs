@@ -33,16 +33,16 @@ namespace OnlinePizzaWebApplication.Repositories
                 cat1, cat2, cat3
             };
 
-            var piz1 = new Pizzas { Name = "Capricciosa", Barcode = 70.00M, Category = cat1, Description = "A normal pizza with a taste from the forest.", ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/2/2a/Pizza_capricciosa.jpg" };
-            var piz2 = new Pizzas { Name = "Veggie", Barcode = 70.00M, Category = cat3, Description = "Veggie Pizza for vegitarians", ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/3/3f/Vegetarian_pizza.jpg" };
-            var piz3 = new Pizzas { Name = "Hawaii", Barcode = 75.00M, Category = cat1, Description = "A nice tasting pizza from Hawaii.", ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/d/d1/Hawaiian_pizza_1.jpg" };
-            var piz4 = new Pizzas { Name = "Margarita", Barcode = 65.00M, Category = cat1, Description = "A basic pizza for everyone.", ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/a/a3/Eq_it-na_pizza-margherita_sep2005_sml.jpg" };
-            var piz5 = new Pizzas { Name = "Kebab Special", Barcode = 85.00M, Category = cat2, Description = "A special pizza with kebab for the hungry one.", ImageUrl = "http://2.bp.blogspot.com/_3cSn3Qz_4IA/THkYqKwGw1I/AAAAAAAAAPg/ybKpvRbjDWE/s1600/matsl%C3%A4kten+002.JPG" };
-            var piz6 = new Pizzas { Name = "Pescatore", Barcode = 80.00M, Category = cat1, Description = "A pizza with taste from the ocean.", ImageUrl = "https://isinginthekitchen.files.wordpress.com/2014/07/dsc_0231.jpg" };
-            var piz7 = new Pizzas { Name = "Barcelona", Barcode = 70.00M, Category = cat1, Description = "A pizza with taste from Spain, Barcelona", ImageUrl = "http://barcelona-home.com/blog/wp-content/upload/pizza/Pizzeria%20Los%20Amigos/pizza-jamon-dulce-y-champinone.jpg" };
-            var piz8 = new Pizzas { Name = "Flying Jacob", Barcode = 89.00M, Category = cat2, Description = "Flying pizza from the sky, with taste of banana.", ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/6/64/Pizza_Hawaii_Special_p%C3%A5_Pizzeria_Papillon_i_Sala_1343.jpg" };
-            var piz9 = new Pizzas { Name = "Kentucky", Barcode = 69.00M, Category = cat3, Description = "A pizza from America with the taste of Kuntucky Chicken.", ImageUrl = "http://assets.kraftfoods.com/recipe_images/opendeploy/54150_640x428.jpg" };
-            var piz10 = new Pizzas { Name = "La Carne", Barcode = 75.00M, Category = cat1, Description = "Italian pizza with lot's of delicious meat.", ImageUrl = "https://www.davannis.com/wp-content/uploads/2015/03/five-meat.jpg" };
+            var piz1 = new Pizzas { Name = "Capricciosa", Barcode = "123456", Category = cat1, Description = "A normal pizza with a taste from the forest.", ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/2/2a/Pizza_capricciosa.jpg" };
+            var piz2 = new Pizzas { Name = "Veggie", Barcode = "123456", Category = cat3, Description = "Veggie Pizza for vegitarians", ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/3/3f/Vegetarian_pizza.jpg" };
+            var piz3 = new Pizzas { Name = "Hawaii", Barcode = "123456", Category = cat1, Description = "A nice tasting pizza from Hawaii.", ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/d/d1/Hawaiian_pizza_1.jpg" };
+            var piz4 = new Pizzas { Name = "Margarita", Barcode = "123456", Category = cat1, Description = "A basic pizza for everyone.", ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/a/a3/Eq_it-na_pizza-margherita_sep2005_sml.jpg" };
+            var piz5 = new Pizzas { Name = "Kebab Special", Barcode = "123456", Category = cat2, Description = "A special pizza with kebab for the hungry one.", ImageUrl = "http://2.bp.blogspot.com/_3cSn3Qz_4IA/THkYqKwGw1I/AAAAAAAAAPg/ybKpvRbjDWE/s1600/matsl%C3%A4kten+002.JPG" };
+            var piz6 = new Pizzas { Name = "Pescatore", Barcode = "123456", Category = cat1, Description = "A pizza with taste from the ocean.", ImageUrl = "https://isinginthekitchen.files.wordpress.com/2014/07/dsc_0231.jpg" };
+            var piz7 = new Pizzas { Name = "Barcelona", Barcode = "123456", Category = cat1, Description = "A pizza with taste from Spain, Barcelona", ImageUrl = "http://barcelona-home.com/blog/wp-content/upload/pizza/Pizzeria%20Los%20Amigos/pizza-jamon-dulce-y-champinone.jpg" };
+            var piz8 = new Pizzas { Name = "Flying Jacob", Barcode = "123456", Category = cat2, Description = "Flying pizza from the sky, with taste of banana.", ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/6/64/Pizza_Hawaii_Special_p%C3%A5_Pizzeria_Papillon_i_Sala_1343.jpg" };
+            var piz9 = new Pizzas { Name = "Kentucky", Barcode = "123456", Category = cat3, Description = "A pizza from America with the taste of Kuntucky Chicken.", ImageUrl = "http://assets.kraftfoods.com/recipe_images/opendeploy/54150_640x428.jpg" };
+            var piz10 = new Pizzas { Name = "La Carne", Barcode = "123456", Category = cat1, Description = "Italian pizza with lot's of delicious meat.", ImageUrl = "https://www.davannis.com/wp-content/uploads/2015/03/five-meat.jpg" };
 
             var pizs = new List<Pizzas>()
             {
@@ -177,7 +177,7 @@ namespace OnlinePizzaWebApplication.Repositories
                 PhoneNumber = "0705123456",
                 User = user1,
                 ZipCode = "43210",
-                OrderTotal = 370.00M,
+                OrderTotal = 370,
             };
 
             var ord2 = new Order { };
@@ -185,9 +185,9 @@ namespace OnlinePizzaWebApplication.Repositories
 
             var orderLines = new List<OrderDetail>()
             {
-                new OrderDetail { Order=ord1, Pizza=piz1, Amount=2, Price=piz1.Barcode},
-                new OrderDetail { Order=ord1, Pizza=piz3, Amount=1, Price=piz3.Barcode},
-                new OrderDetail { Order=ord1, Pizza=piz5, Amount=3, Price=piz5.Barcode},
+                new OrderDetail { Order=ord1, Pizza=piz1, AmountBoxes=2,AmountSingles=2},
+                new OrderDetail { Order=ord1, Pizza=piz3, AmountBoxes=1,AmountSingles=2},
+                new OrderDetail { Order=ord1, Pizza=piz5, AmountBoxes=3,AmountSingles=2},
             };
 
             var orders = new List<Order>()

@@ -84,7 +84,7 @@ namespace OnlinePizzaWebApplication.Migrations
                         .IsRequired()
                         .HasMaxLength(100);
 
-                    b.Property<decimal>("Price");
+                    b.Property<float>("Price");
 
                     b.HasKey("Id");
 

@@ -69,7 +69,7 @@ namespace OnlinePizzaWebApplication.Models
         [ScaffoldColumn(false)]
         [DisplayName("Order Total")]
         [Precision(18, 2)]
-        public decimal OrderTotal { get; set; }
+        public float OrderTotal { get; set; }
 
         [BindNever]
         [ScaffoldColumn(false)]
