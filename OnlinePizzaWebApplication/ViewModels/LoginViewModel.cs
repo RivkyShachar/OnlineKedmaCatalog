@@ -9,15 +9,13 @@ namespace OnlinePizzaWebApplication.ViewModels
 {
     public class LoginViewModel
     {
-        [Required]
         [DisplayName("User Name")]
         public string UserName { get; set; }
 
-        [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        [ScaffoldColumn(false)]
+        //[ScaffoldColumn(false)]
         public string ReturnUrl { get; set; }
     }
 }
