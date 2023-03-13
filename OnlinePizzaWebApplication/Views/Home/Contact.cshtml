@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "Contact Us";
 }
-
+<html dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Ogani Template">
@@ -25,7 +25,59 @@
     <link rel="stylesheet" href="~/css/style.css" type="text/css">
 </head>
 
+
+
+
+
 <body>
+
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+
+    <!-- Humberger End -->
+    <!-- Header Section Begin -->
+    <header class="header">
+        <div class="container">
+            <div class="row">
+                @* <div class="col-lg-3">
+                <div class="header__logo">
+                <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                </div>
+                </div>*@
+                <div class="col-lg-6">
+                    <nav class="header__menu">
+
+
+                        <ul>
+                            <li class="active"><a href="@Url.Action("index", "Home")">עמוד ראשי</a></li>
+                            <li class="active"><a href="@Url.Action("About", "Home")">עריכה</a></li>
+                            <li class="active"><a href="@Url.Action("Contact","Home")">יצירת קשר</a></li>
+                            <li class="active"><a href="@Url.Action("Contact","Home")"> </a></li>
+
+                        </ul>
+
+                    </nav>
+                </div>
+                <div class="col-lg-3">
+                    <div class="header__cart">
+                        <ul>
+                            <li>
+                                <a href="@Url.Action("Index","ShoppingCart")">
+                                    <i class="fa fa-shopping-bag"></i> <span>@await Component.InvokeAsync("ShoppingCartSummary")</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="humberger__open">
+                <i class="fa fa-bars"></i>
+            </div>
+        </div>
+    </header>
     
     <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg">
@@ -33,11 +85,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
-                        <h2>Contact Us</h2>
-                        <div class="breadcrumb__option">
-                            <a href="./index.html">Home</a>
-                            <span>Contact Us</span>
-                        </div>
+                        <h2>צרו קשר</h2>
                     </div>
                 </div>
             </div>
@@ -46,39 +94,33 @@
     <!-- Breadcrumb Section End -->
     <!-- Contact Section Begin -->
     <section class="contact spad">
-        <div class="container">
+        <div class="container" style="display: flex; align-items: center;">
             <div class="row">
                 <div class="col-lg-3 col-md-3 col-sm-6 text-center">
                     <div class="contact__widget">
                         <span class="icon_phone"></span>
-                        <h4>Phone</h4>
+                        <h4>טלפון</h4>
                         <p>+01-3-8888-6868</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6 text-center">
                     <div class="contact__widget">
                         <span class="icon_pin_alt"></span>
-                        <h4>Address</h4>
+                        <h4>כתובת</h4>
                         <p>60-49 Road 11378 New York</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6 text-center">
                     <div class="contact__widget">
-                        <span class="icon_clock_alt"></span>
-                        <h4>Open time</h4>
-                        <p>10:00 am to 23:00 pm</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-6 text-center">
-                    <div class="contact__widget">
                         <span class="icon_mail_alt"></span>
-                        <h4>Email</h4>
+                        <h4>אמייל</h4>
                         <p>hello@colorlib.com</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
     <!-- Contact Section End -->
     <!-- Map Begin -->
     <div class="map">
@@ -87,10 +129,10 @@
         <div class="map-inside">
             <i class="icon_pin"></i>
             <div class="inside-widget">
-                <h4>ישראל</h4>
+                <h4> ישראל</h4>
                 <ul>
-                    <li>Phone: +12-345-6789</li>
-                    <li>Add:גבעת שאול 15 ירושלים</li>
+                    <li>טלפון</li>
+                    <li>כתובת<li>
                 </ul>
             </div>
         </div>
