@@ -58,6 +58,13 @@
                                             <a class="btn btn-default" asp-action="RemoveFromShoppingCart" asp-route-pizzaId="@line.Pizza.Id"><b>-</b></a><b>@line.Amount</b>          
                                             <a class="btn btn-default" asp-action="AddToShoppingCart" asp-route-pizzaId="@line.Pizza.Id"><b>+</b></a>
                                         </td>
+                                        <td class="text-center">
+                                            <form asp-action="UpdateShoppingCart" asp-route-pizzaId="@line.Pizza.Id">
+                                                <input type="number" name="amount" value="@line.Amount" min="1" max="100" />
+                                                <button type="submit" class="btn btn-primary">Update</button>
+                                            </form>
+                                        </td>
+
                                         <td class="shoping__cart__total">
                                             @((line.Amount * line.Pizza.Price).ToString("c"))
                                         </td>

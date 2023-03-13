@@ -48,7 +48,7 @@ namespace OnlinePizzaWebApplication.Models
                 {
                     ShoppingCartId = ShoppingCartId,
                     Pizza = pizza,
-                    Amount = 1
+                    Amount = amount
                 };
 
                 _appDbContext.ShoppingCartItems.Add(shoppingCartItem);
@@ -86,6 +86,61 @@ namespace OnlinePizzaWebApplication.Models
 
             return localAmount;
         }
+
+        public async Task<int> UpdateCartAsync(Pizzas pizza, int amount)//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        {
+            var shoppingCartItem =
+                    await _appDbContext.ShoppingCartItems.SingleOrDefaultAsync(
+                        s => s.Pizza.Id == pizza.Id && s.ShoppingCartId == ShoppingCartId);
+            var localAmount = 0;//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+            if (shoppingCartItem == null)
+            {
+                shoppingCartItem = new ShoppingCartItem
+                {
+                    ShoppingCartId = ShoppingCartId,
+                    Pizza = pizza,
+                    Amount = amount
+                };
+
+                _appDbContext.ShoppingCartItems.Add(shoppingCartItem);
+            }
+            else
+            {
+                if (shoppingCartItem.Amount > 1)
+                {
+                    shoppingCartItem.Amount--;
+                    localAmount = shoppingCartItem.Amount;
+                }
+                else
+                {
+                    _appDbContext.ShoppingCartItems.Remove(shoppingCartItem);
+                }
+            }
+
+            await _appDbContext.SaveChangesAsync();
+
+            return localAmount;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         public async Task<List<ShoppingCartItem>> GetShoppingCartItemsAsync()
         {

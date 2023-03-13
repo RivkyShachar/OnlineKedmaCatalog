@@ -38,13 +38,13 @@ namespace OnlinePizzaWebApplication.Controllers
             return View(shoppingCartViewModel);
         }
 
-        public async Task<IActionResult> AddToShoppingCart(int pizzaId)
+        public async Task<IActionResult> AddToShoppingCart(int pizzaId, int amount=1)
         {
             var selectedPizza = await _pizzaRepository.GetByIdAsync(pizzaId);
 
             if (selectedPizza != null)
             {
-                await _shoppingCart.AddToCartAsync(selectedPizza, 1);
+                await _shoppingCart.AddToCartAsync(selectedPizza, amount);
             }
             return RedirectToAction("Index");
         }
@@ -56,6 +56,17 @@ namespace OnlinePizzaWebApplication.Controllers
             if (selectedPizza != null)
             {
                 await _shoppingCart.RemoveFromCartAsync(selectedPizza);
+            }
+            return RedirectToAction("Index");
+        }
+
+        public async Task<IActionResult> UpdateShoppingCart(int pizzaId, int amount)
+        {
+            var selectedPizza = await _pizzaRepository.GetByIdAsync(pizzaId);
+
+            if (selectedPizza != null)
+            {
+                await _shoppingCart.UpdateCartAsync(selectedPizza, amount);
             }
             return RedirectToAction("Index");
         }
