@@ -23,7 +23,10 @@ namespace OnlinePizzaWebApplication.Models
 
         [Range(0, 1000)]
         [DataType(DataType.Currency)]
-        public decimal Price { get; set; }
+        public decimal Barcode { get; set; }
+
+        [DataType(DataType.Text)]
+        public string Weight { get; set; }
 
         [DataType(DataType.MultilineText)]
         public string Description { get; set; }
@@ -31,7 +34,7 @@ namespace OnlinePizzaWebApplication.Models
         [DataType(DataType.ImageUrl)]
         public string ImageUrl { get; set; }
 
-
+        
         [DisplayName("Select Category")]
         public int CategoriesId { get; set; }
 

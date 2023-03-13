@@ -97,7 +97,9 @@
                                             <img src="@line.Pizza.ImageUrl" alt="">
                                             <h5>@line.Pizza.Name</h5>
                                         </td>
-                                       
+                                        <td class="shoping__cart__price">
+                                            @line.Pizza.Barcode.ToString("c")
+                                        </td>
                                         <td class="text-center">
                                             <a class="btn btn-default" asp-action="RemoveFromShoppingCart" asp-route-pizzaId="@line.Pizza.Id"><b>-</b></a><b>@line.Amount</b>          
                                             <a class="btn btn-default" asp-action="AddToShoppingCart" asp-route-pizzaId="@line.Pizza.Id"><b>+</b></a>

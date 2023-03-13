@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore.Migrations;
 
+
 namespace OnlinePizzaWebApplication.Migrations
 {
     public partial class PizzaPriceTypeFix : Migration
@@ -9,7 +10,7 @@ namespace OnlinePizzaWebApplication.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<decimal>(
-                name: "Price",
+                name: "Barcode",
                 table: "Pizzas",
                 nullable: false,
                 oldClrType: typeof(double));
@@ -18,7 +19,7 @@ namespace OnlinePizzaWebApplication.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<double>(
-                name: "Price",
+                name: "Barcode",
                 table: "Pizzas",
                 nullable: false,
                 oldClrType: typeof(decimal));

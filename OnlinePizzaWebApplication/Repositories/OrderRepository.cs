@@ -33,7 +33,7 @@ namespace OnlinePizzaWebApplication.Repositories
                     Amount = shoppingCartItem.Amount,
                     PizzaId = shoppingCartItem.Pizza.Id,
                     Order = order,
-                    Price = shoppingCartItem.Pizza.Price,
+                    Price = shoppingCartItem.Pizza.Barcode,
                     
                 };
                 totalPrice += orderDetail.Price * orderDetail.Amount;
