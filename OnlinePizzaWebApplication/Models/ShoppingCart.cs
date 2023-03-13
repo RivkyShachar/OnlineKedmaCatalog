@@ -165,7 +165,7 @@ namespace OnlinePizzaWebApplication.Models
         public decimal GetShoppingCartTotal()
         {
             var total = _appDbContext.ShoppingCartItems.Where(c => c.ShoppingCartId == ShoppingCartId)
-                .Select(c => c.Pizza.Price * c.Amount).Sum();
+                .Select(c => c.Pizza.Barcode * c.Amount).Sum();
             return total;
         }
 

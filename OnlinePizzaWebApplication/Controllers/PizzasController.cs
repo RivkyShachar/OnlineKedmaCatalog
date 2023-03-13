@@ -104,7 +104,7 @@ namespace OnlinePizzaWebApplication.Controllers
                 var pizzaList = await _context.Pizzas.Include(x => x.Category).Include(x => x.Reviews).Include(x => x.PizzaIngredients).OrderBy(x => x.Name)
                      .Where(p =>
                      p.Name.ToLower().Contains(searchString)
-                  || p.Price.ToString("c").ToLower().Contains(searchString)
+                  || p.Barcode.ToString("c").ToLower().Contains(searchString)
                   || p.Category.Name.ToLower().Contains(searchString)
                   || p.PizzaIngredients.Select(x => x.Ingredient.Name.ToLower()).Contains(searchString))
                     .ToListAsync();
@@ -237,7 +237,7 @@ namespace OnlinePizzaWebApplication.Controllers
                 var pizzaList = await _context.Pizzas.Include(x => x.Category).Include(x => x.Reviews).Include(x => x.PizzaIngredients).OrderBy(x => x.Name)
                     .Where(p =>
                      p.Name.ToLower().Contains(search)
-                  || p.Price.ToString("c").ToLower().Contains(search)
+                  || p.Barcode.ToString("c").ToLower().Contains(search)
                   || p.Category.Name.ToLower().Contains(search)
                   || p.PizzaIngredients.Select(x => x.Ingredient.Name.ToLower()).Contains(search)).ToListAsync();
 
@@ -266,7 +266,7 @@ namespace OnlinePizzaWebApplication.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Price,Description,ImageUrl,CategoriesId")] Pizzas pizzas)
+        public async Task<IActionResult> Create([Bind("Id,Name,Barcode,Description,ImageUrl,CategoriesId")] Pizzas pizzas)
         {
             if (ModelState.IsValid)
             {
@@ -301,7 +301,7 @@ namespace OnlinePizzaWebApplication.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Price,Description,ImageUrl,CategoriesId")] Pizzas pizzas)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Barcode,Description,ImageUrl,CategoriesId")] Pizzas pizzas)
         {
             if (id != pizzas.Id)
             {

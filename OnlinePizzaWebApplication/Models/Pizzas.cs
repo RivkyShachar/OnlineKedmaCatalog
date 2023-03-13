@@ -23,7 +23,7 @@ namespace OnlinePizzaWebApplication.Models
 
         [Range(0, 1000)]
         [DataType(DataType.Currency)]
-        public decimal Price { get; set; }
+        public decimal Barcode { get; set; }
 
         [DataType(DataType.MultilineText)]
         public string Description { get; set; }
