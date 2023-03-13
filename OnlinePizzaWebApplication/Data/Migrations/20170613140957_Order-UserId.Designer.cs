@@ -314,8 +314,6 @@ namespace OnlinePizzaWebApplication.Migrations
 
                     b.Property<string>("ImageUrl");
 
-                    b.Property<bool>("IsPizzaOfTheWeek");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(100);

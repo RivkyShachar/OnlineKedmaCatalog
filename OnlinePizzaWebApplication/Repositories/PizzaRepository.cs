@@ -19,7 +19,6 @@ namespace OnlinePizzaWebApplication.Repositories
 
         public IEnumerable<Pizzas> Pizzas => _context.Pizzas.Include(p => p.Category).Include(p => p.Reviews).Include(p => p.PizzaIngredients); //include here
 
-        public IEnumerable<Pizzas> PizzasOfTheWeek => _context.Pizzas.Where(p => p.IsPizzaOfTheWeek).Include(p => p.Category);
 
         public void Add(Pizzas pizza)
         {
