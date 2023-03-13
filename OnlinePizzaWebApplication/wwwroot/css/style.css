@@ -1081,9 +1081,24 @@ ol {
   Sidebar
 -----------------------*/
 
+
+
+.my_sidebar {
+	left: 0;
+}
+
+[dir="rtl"] .my_sidebar {
+	left: auto;
+	right: 0;
+}
 .sidebar__item {
 	margin-bottom: 35px;
+	left: 0;
+}
 
+[dir="rtl"].sidebar__item {
+	left: auto;
+	right: 0;
 }
 
 .sidebar__item.sidebar__item__color--option {
@@ -1100,7 +1115,7 @@ ol {
 	list-style: none;
 }
 	.sidebar__item ul li a {
-		direction: rtl !important;
+		left: 0;
 		font-size: 16px;
 		color: #1c1c1c;
 		line-height: 39px;
