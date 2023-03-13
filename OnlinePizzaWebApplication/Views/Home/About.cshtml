@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "About Us";
 }
-
+<html dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Ogani Template">
@@ -36,34 +36,23 @@
     <!-- Humberger End -->
     <!-- Header Section Begin -->
     <header class="header">
-        <div class="header__top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 col-md-6">
-                        <div class="header__top__left">
-                            <ul>
-                                <li><i class="fa fa-envelope"></i> kedma@gmail.com</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="container">
             <div class="row">
-                <div class="col-lg-3">
-                    <div class="header__logo">
-                        <a href="./index.html"><img src="img/logo.png" alt=""></a>
-                    </div>
+                @* <div class="col-lg-3">
+                <div class="header__logo">
+                <a href="./index.html"><img src="img/logo.png" alt=""></a>
                 </div>
+                </div>*@
                 <div class="col-lg-6">
                     <nav class="header__menu">
 
 
                         <ul>
                             <li class="active"><a href="@Url.Action("index", "Home")">עמוד ראשי</a></li>
-                            <li><a href="@Url.Action("About", "Home")">עריכה</a></li>
-                            <li><a href="@Url.Action("Contact","Home")">יצירת קשר</a></li>
+                            <li class="active"><a href="@Url.Action("About", "Home")">עריכה</a></li>
+                            <li class="active"><a href="@Url.Action("Contact","Home")">יצירת קשר</a></li>
+                            <li class="active"><a href="@Url.Action("Contact","Home")"> </a></li>
+
                         </ul>
 
                     </nav>
@@ -71,7 +60,11 @@
                 <div class="col-lg-3">
                     <div class="header__cart">
                         <ul>
-                            <li><a href="@Url.Action("Index","ShoppingCart")"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                            <li>
+                                <a href="@Url.Action("Index","ShoppingCart")">
+                                    <i class="fa fa-shopping-bag"></i> <span>@await Component.InvokeAsync("ShoppingCartSummary")</span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -82,103 +75,33 @@
         </div>
     </header>
 
-    <section class="hero">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-9">
-                    <div class="hero__search">
-                        <div class="hero__search__form">
-                            <form action="#">
-                                <div class="hero__search__categories">
-                                    All Categories
-                                    <span class="arrow_carrot-down"></span>
-                                </div>
-                                <input type="text" placeholder="What do yo u need?">
-                                <button type="submit" class="site-btn">SEARCH</button>
-                            </form>
-                        </div>
-                        <div class="hero__search__phone">
-                            <div class="hero__search__phone__icon">
-                                <i class="fa fa-phone"></i>
-                            </div>
-                            <div class="hero__search__phone__text">
-                                <h5>+65 11.188.888</h5>
-                                <span>support 24/7 time</span>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Categories Section End -->
-    <section class="product spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-5">
-                    <div class="sidebar">
-                        <div class="sidebar__item">
-                            <h4>Department</h4>
-                            <ul>
-                                <li><a href="#">Fresh Meat</a></li>
-                                <li><a href="#">Vegetables</a></li>
-                                <li><a href="#">Fruit & Nut Gifts</a></li>
-                                <li><a href="#">Fresh Berries</a></li>
-                                <li><a href="#">Ocean Foods</a></li>
-                                <li><a href="#">Butter & Eggs</a></li>
-                                <li><a href="#">Fastfood</a></li>
-                                <li><a href="#">Fresh Onion</a></li>
-                                <li><a href="#">Papayaya & Crisps</a></li>
-                                <li><a href="#">Oatmeal</a></li>
-                            </ul>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-    </section>
-
-
-    <!-- Js Plugins -->
-    <script src="~/js/jquery-3.3.1.min.js"></script>
-    <script src="~/js/bootstrap.min.js"></script>
-    <script src="~/js/jquery.nice-select.min.js"></script>
-    <script src="~/js/jquery-ui.min.js"></script>
-    <script src="~/js/jquery.slicknav.js"></script>
-    <script src="~/js/mixitup.min.js"></script>
-    <script src="~/js/owl.carousel.min.js"></script>
-    <script src="~/js/main.js"></script>
-
-
-
 
     <p>
-        <a asp-action="Create" class="btn btn-success">Create New</a>
-        <a asp-action="Categories" class="btn btn-success">Edit categories</a>
+        <a asp-action="Create" class="btn btn-success">יצירת מוצר חדש</a>
+        <a asp-action="Categories" class="btn btn-success">עריכת קטגוריה</a>
     </p>
     <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Price)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Description)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ImageUrl)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Category)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Price)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ImageUrl)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Category)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
         <tbody>
             @foreach (var item in Model)
             {
@@ -193,20 +116,20 @@
                         @Html.DisplayFor(modelItem => item.Description)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.ImageUrl)
+                        <img src="@item.ImageUrl" alt="@item.Name" style="max-width: 70px; max-height: 70px;" />
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Category.Name)
                     </td>
                     <td>
-                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        <a asp-action="Edit" asp-route-id="@item.Id">עריכה</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">פרטים</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">מחיקה</a>
                     </td>
                 </tr>
             }
         </tbody>
-    </table>
+        </table>
 
     <!-- Js Plugins -->
     <script src="~/js/jquery-3.3.1.min.js"></script>
@@ -223,3 +146,4 @@
 </body>
 
 
+</html>
