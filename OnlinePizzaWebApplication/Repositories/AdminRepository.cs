@@ -24,9 +24,9 @@ namespace OnlinePizzaWebApplication.Repositories
             var _roleManager = _serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
             var _userManager = _serviceProvider.GetRequiredService<UserManager<IdentityUser>>();
 
-            var cat1 = new Categories { Name = "Standard", Description = "The Bakery's Standard pizzas all year around." };
-            var cat2 = new Categories { Name = "Spcialities", Description = "The Bakery's Speciality pizzas only for a limited time." };
-            var cat3 = new Categories { Name = "News", Description = "The Bakery's New pizzas on the menu." };
+            var cat1 = new Categories { Name = "Standard"};
+            var cat2 = new Categories { Name = "Spcialities" };
+            var cat3 = new Categories { Name = "News" };
 
             var cats = new List<Categories>()
             {
