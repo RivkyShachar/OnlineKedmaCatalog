@@ -301,7 +301,7 @@ namespace OnlinePizzaWebApplication.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Barcode,Description,ImageUrl,CategoriesId")] Pizzas pizzas)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Barcode,Weight,Description,ImageUrl,CategoriesId")] Pizzas pizzas)
         {
             if (id != pizzas.Id)
             {

@@ -25,13 +25,16 @@ namespace OnlinePizzaWebApplication.Models
         [DataType(DataType.Currency)]
         public decimal Barcode { get; set; }
 
+        [DataType(DataType.Text)]
+        public string Weight { get; set; }
+
         [DataType(DataType.MultilineText)]
         public string Description { get; set; }
 
         [DataType(DataType.ImageUrl)]
         public string ImageUrl { get; set; }
 
-
+        
         [DisplayName("Select Category")]
         public int CategoriesId { get; set; }
 

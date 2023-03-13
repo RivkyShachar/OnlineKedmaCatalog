@@ -18,7 +18,8 @@ namespace OnlinePizzaWebApplication.Migrations
                     Description = table.Column<string>(nullable: true),
                     Image = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: true),
-                    Barcode = table.Column<double>(nullable: false)
+                    Barcode = table.Column<double>(nullable: false),
+                    Weight = table.Column<string>(nullable: true),
                 },
                 constraints: table =>
                 {

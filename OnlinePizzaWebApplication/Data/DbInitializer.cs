@@ -66,16 +66,16 @@ namespace OnlinePizzaWebApplication.Data
                 cat1, cat2, cat3
             }; 
 
-            var piz1 = new Pizzas { Name = "מוצר א", Barcode = 70.00M, Category = cat1, Description = "תיאור מוצר א", ImageUrl = "img/kedmaPic/IMG-20230312-WA0033.jpg" };
-            var piz2 = new Pizzas { Name = "Veggie", Barcode = 70.00M, Category = cat3, Description = "Veggie Pizza for vegitarians", ImageUrl = "img/kedmaPic/IMG-20230312-WA0034.jpg" };
-            var piz3 = new Pizzas { Name = "Hawaii", Barcode = 75.00M, Category = cat1, Description = "A nice tasting pizza from Hawaii.", ImageUrl = "img/kedmaPic/IMG-20230312-WA0035.jpg" };
-            var piz4 = new Pizzas { Name = "Margarita", Barcode = 65.00M, Category = cat1, Description = "A basic pizza for everyone.", ImageUrl = "img/kedmaPic/IMG-20230312-WA0036.jpg" };
-            var piz5 = new Pizzas { Name = "Kebab Special", Barcode = 85.00M, Category = cat2, Description = "A special pizza with kebab for the hungry one.", ImageUrl = "img/kedmaPic/IMG-20230312-WA0037.jpg" };
-            var piz6 = new Pizzas { Name = "Pescatore", Barcode = 80.00M, Category = cat1, Description = "A pizza with taste from the ocean.", ImageUrl = "img/kedmaPic/IMG-20230312-WA0038.jpg" };
-            var piz7 = new Pizzas { Name = "Barcelona", Barcode = 70.00M, Category = cat1, Description = "A pizza with taste from Spain, Barcelona", ImageUrl = "img/kedmaPic/IMG-20230312-WA0039.jpg" };
-            var piz8 = new Pizzas { Name = "Flying Jacob", Barcode = 89.00M, Category = cat2, Description = "Flying pizza from the sky, with taste of banana.", ImageUrl = "img/kedmaPic/IMG-20230312-WA0040.jpg" };
-            var piz9 = new Pizzas { Name = "Kentucky", Barcode = 69.00M, Category = cat3, Description = "A pizza from America with the taste of Kuntucky Chicken.", ImageUrl = "img/kedmaPic/IMG-20230312-WA0041.jpg" };
-            var piz10 = new Pizzas { Name = "La Carne", Barcode = 75.00M, Category = cat1, Description = "Italian pizza with lot's of delicious meat.", ImageUrl = "img/kedmaPic/IMG-20230312-WA0042.jpg" };
+            var piz1 = new Pizzas { Name = "מוצר א", Barcode = 70.00M, Weight="3 קג", Category = cat1, Description = "תיאור מוצר א", ImageUrl = "img/kedmaPic/IMG-20230312-WA0033.jpg" };
+            var piz2 = new Pizzas { Name = "Veggie", Barcode = 70.00M, Weight = "3 קג", Category = cat3, Description = "Veggie Pizza for vegitarians", ImageUrl = "img/kedmaPic/IMG-20230312-WA0034.jpg" };
+            var piz3 = new Pizzas { Name = "Hawaii", Barcode = 75.00M, Weight = "3 קג", Category = cat1, Description = "A nice tasting pizza from Hawaii.", ImageUrl = "img/kedmaPic/IMG-20230312-WA0035.jpg" };
+            var piz4 = new Pizzas { Name = "Margarita", Barcode = 65.00M, Weight = "3 קג", Category = cat1, Description = "A basic pizza for everyone.", ImageUrl = "img/kedmaPic/IMG-20230312-WA0036.jpg" };
+            var piz5 = new Pizzas { Name = "Kebab Special", Barcode = 85.00M, Weight = "3 קג", Category = cat2, Description = "A special pizza with kebab for the hungry one.", ImageUrl = "img/kedmaPic/IMG-20230312-WA0037.jpg" };
+            var piz6 = new Pizzas { Name = "Pescatore", Barcode = 80.00M, Weight = "3 קג", Category = cat1, Description = "A pizza with taste from the ocean.", ImageUrl = "img/kedmaPic/IMG-20230312-WA0038.jpg" };
+            var piz7 = new Pizzas { Name = "Barcelona", Barcode = 70.00M, Weight = "3 קג", Category = cat1, Description = "A pizza with taste from Spain, Barcelona", ImageUrl = "img/kedmaPic/IMG-20230312-WA0039.jpg" };
+            var piz8 = new Pizzas { Name = "Flying Jacob", Barcode = 89.00M, Weight = "3 קג", Category = cat2, Description = "Flying pizza from the sky, with taste of banana.", ImageUrl = "img/kedmaPic/IMG-20230312-WA0040.jpg" };
+            var piz9 = new Pizzas { Name = "Kentucky", Barcode = 69.00M, Weight = "3 קג", Category = cat3, Description = "A pizza from America with the taste of Kuntucky Chicken.", ImageUrl = "img/kedmaPic/IMG-20230312-WA0041.jpg" };
+            var piz10 = new Pizzas { Name = "La Carne", Barcode = 75.00M, Weight = "3 קג", Category = cat1, Description = "Italian pizza with lot's of delicious meat.", ImageUrl = "img/kedmaPic/IMG-20230312-WA0042.jpg" };
 
             var pizs = new List<Pizzas>()
             {

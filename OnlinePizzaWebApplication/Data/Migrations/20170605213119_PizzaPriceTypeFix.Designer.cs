@@ -31,6 +31,8 @@ namespace OnlinePizzaWebApplication.Migrations
 
                     b.Property<decimal>("Barcode");
 
+                    b.Property<string>("Weight");
+
                     b.HasKey("Id");
 
                     b.ToTable("Pizzas");
