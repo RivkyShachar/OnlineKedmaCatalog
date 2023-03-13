@@ -29,6 +29,7 @@
 </head>
 
 <body>
+
     <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
@@ -51,8 +52,10 @@
 
                         <ul>
                             <li class="active"><a href="@Url.Action("index", "Home")">עמוד ראשי</a></li>
-                            <li><a href="@Url.Action("About", "Home")">עריכה</a></li>
-                            <li><a href="@Url.Action("Contact","Home")">יצירת קשר</a></li>
+                            <li class="active"><a href="@Url.Action("About", "Home")">עריכה</a></li>
+                            <li class="active"><a href="@Url.Action("Contact","Home")">יצירת קשר</a></li>
+                            <li class="active"><a href="@Url.Action("Contact","Home")"> </a></li>
+
                         </ul>
                       
                     </nav>
@@ -60,7 +63,11 @@
                 <div class="col-lg-3">
                     <div class="header__cart">
                         <ul>
-                            <li><a href="@Url.Action("Index","ShoppingCart")"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                            <li>
+                                <a href="@Url.Action("Index","ShoppingCart")">
+                                    <i class="fa fa-shopping-bag"></i> <span>@await Component.InvokeAsync("ShoppingCartSummary")</span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -101,18 +108,15 @@
         </div>
     </section>*@
     <!-- Categories Section End -->
-    <div class="my_sidebar">
-        <i style="border: 1px solid blue;" class="glyphicon glyphicon-chevron-left"> </i> <br>
-        </div>
-
+   
     <section class="product spad">
 
-        <div class="container">
+        <div class="container" dir="rtl">
             <div class="row">
                 <div class="col-lg-3 col-md-5">
                     <div class="sidebar">
                         <div class="sidebar__item" >
-                            <h4>מחלקות</h4>
+                            <h4>קטגוריות</h4>
                             <ul>
                                 <li><a href="#">מוצרי יסוד</a></li>
                                 <li><a href="#">קטניות</a></li>
@@ -148,21 +152,18 @@
                                             <div class="featured__item">
                                                 <div class="featured__item__pic set-bg" data-setbg="@Url.Content(@item.ImageUrl)">
                                                     <ul class="featured__item__pic__hover">
-                                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                                        <li>
+                                                       <li>
                                                             <p>
                                                                 <a asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-pizzaId="@item.Id" class="fa fa-shopping-cart"></a>
                                                             </p>
                                                         </li>
                                                     </ul>
                                                 </div>
-                                                <a href="@Url.Action("DisplayDetails", "Pizzas" ,new {  id=item.Id })">
                                                     <div class="featured__item__text">
                                                         <h6> @Html.DisplayFor(modelItem => item.Name)</h6>
                                                         <h5>@Html.DisplayFor(modelItem => item.Price)</h5>
                                                     </div>
-                                                </a>
+                                               
                                             </div>
                                         </div>
                                     }
