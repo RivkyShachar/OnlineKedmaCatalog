@@ -143,8 +143,8 @@ ol {
 }
 
 .spad {
-	padding-top: 100px;
-	padding-bottom: 100px;
+	padding-top: 40px;
+	padding-bottom: 40px;
 }
 
 .text-white h1,
@@ -563,7 +563,7 @@ ol {
 -----------------------*/
 
 .hero {
-	padding-bottom: 50px;
+	padding-bottom: 1px;
 }
 
 .hero.hero-normal {
@@ -591,7 +591,7 @@ ol {
 .hero__categories__all {
 	background: #7fad39;
 	position: relative;
-	padding: 10px 25px 10px 40px;
+	padding: 10px 25px 10px 1px;
 	cursor: pointer;
 }
 
@@ -621,7 +621,6 @@ ol {
 	border: 1px solid #ebebeb;
 	padding-left: 40px;
 	padding-top: 10px;
-	padding-bottom: 12px;
 }
 
 .hero__categories ul li {
@@ -813,7 +812,7 @@ ol {
 -----------------------*/
 
 .featured {
-	padding-top: 80px;
+	padding-top: 30px;
 	padding-bottom: 40px;
 }
 
@@ -1019,6 +1018,7 @@ ol {
 	font-weight: 700;
 }
 
+
 /*---------------------
   Form BLog
 -----------------------*/
@@ -1081,8 +1081,24 @@ ol {
   Sidebar
 -----------------------*/
 
+
+
+.my_sidebar {
+	left: 0;
+}
+
+[dir="rtl"] .my_sidebar {
+	left: auto;
+	right: 0;
+}
 .sidebar__item {
 	margin-bottom: 35px;
+	left: 0;
+}
+
+[dir="rtl"].sidebar__item {
+	left: auto;
+	right: 0;
 }
 
 .sidebar__item.sidebar__item__color--option {
@@ -1098,13 +1114,13 @@ ol {
 .sidebar__item ul li {
 	list-style: none;
 }
-
-.sidebar__item ul li a {
-	font-size: 16px;
-	color: #1c1c1c;
-	line-height: 39px;
-	display: block;
-}
+	.sidebar__item ul li a {
+		left: 0;
+		font-size: 16px;
+		color: #1c1c1c;
+		line-height: 39px;
+		display: block;
+	}
 
 .sidebar__item .latest-product__text {
 	position: relative;
@@ -1256,8 +1272,8 @@ ol {
 -----------------------*/
 
 .product {
-	padding-top: 80px;
-	padding-bottom: 80px;
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
 
 .product__discount {
@@ -1423,9 +1439,9 @@ ol {
 }
 
 .filter__item {
-	padding-top: 45px;
+	padding-top: 20px;
 	border-top: 1px solid #ebebeb;
-	padding-bottom: 20px;
+	padding-bottom: 10px;
 }
 
 .filter__sort {
@@ -2617,7 +2633,7 @@ ol {
 
 .footer {
 	background: #F3F6FA;
-	padding-top: 70px;
+	padding-top: 30px;
 	padding-bottom: 0;
 }
 

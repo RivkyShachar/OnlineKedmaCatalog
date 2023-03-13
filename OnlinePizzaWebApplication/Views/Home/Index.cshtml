@@ -4,6 +4,8 @@
     var pageName = "Home page";
     ViewData["Title"] = pageName;
 }
+<html dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Ogani Template">
@@ -36,26 +38,13 @@
     <!-- Humberger End -->
     <!-- Header Section Begin -->
     <header class="header">
-        <div class="header__top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 col-md-6">
-                        <div class="header__top__left">
-                            <ul>
-                                <li><i class="fa fa-envelope"></i> kedma@gmail.com</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="container">
             <div class="row">
-                <div class="col-lg-3">
+               @* <div class="col-lg-3">
                     <div class="header__logo">
                         <a href="./index.html"><img src="img/logo.png" alt=""></a>
                     </div>
-                </div>
+                </div>*@
                 <div class="col-lg-6">
                     <nav class="header__menu">
 
@@ -82,7 +71,7 @@
         </div>
     </header>
   
-    <section class="hero">
+ @*   <section class="hero">
         <div class="container">
             <div class="row">
                 <div class="col-lg-9">
@@ -103,7 +92,6 @@
                             </div>
                             <div class="hero__search__phone__text">
                                 <h5>+65 11.188.888</h5>
-                                <span>support 24/7 time</span>
                             </div>
                         </div>
                     </div>
@@ -111,58 +99,43 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section>*@
     <!-- Categories Section End -->
+    <div class="my_sidebar">
+        <i style="border: 1px solid blue;" class="glyphicon glyphicon-chevron-left"> </i> <br>
+        </div>
+
     <section class="product spad">
+
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-5">
                     <div class="sidebar">
-                        <div class="sidebar__item">
-                            <h4>Department</h4>
+                        <div class="sidebar__item" >
+                            <h4>מחלקות</h4>
                             <ul>
-                                <li><a href="#">Fresh Meat</a></li>
-                                <li><a href="#">Vegetables</a></li>
-                                <li><a href="#">Fruit & Nut Gifts</a></li>
-                                <li><a href="#">Fresh Berries</a></li>
-                                <li><a href="#">Ocean Foods</a></li>
-                                <li><a href="#">Butter & Eggs</a></li>
-                                <li><a href="#">Fastfood</a></li>
-                                <li><a href="#">Fresh Onion</a></li>
-                                <li><a href="#">Papayaya & Crisps</a></li>
-                                <li><a href="#">Oatmeal</a></li>
+                                <li><a href="#">מוצרי יסוד</a></li>
+                                <li><a href="#">קטניות</a></li>
+                                <li><a href="#">קמחים</a></li>
+                                <li><a href="#">פיצוחים</a></li>
+                                <li><a href="#">מוצרי אפיה</a></li>
+                                <li><a href="#">ממתקים</a></li>
+                                <li><a href="#">תבלינים</a></li>
+                                <li><a href="#">תבלינים בשקית</a></li>
+                                <li><a href="#">שימורים</a></li>
+                                <li><a href="#">שמנים ומיצים</a></li>
+                                <li><a href="#">מוצרי טבע</a></li>
+                                <li><a href="#">חטיפים מן הטבע</a></li>
+                                <li><a href="#">שמרלינג</a></li>
                             </ul>
                         </div>
                        
                       
                     </div>
                 </div>
+
                 <div class="col-lg-9 col-md-7">
 
-                    <div class="filter__item">
-                        <div class="row">
-                            <div class="col-lg-4 col-md-5">
-                                <div class="filter__sort">
-                                    <span>Sort By</span>
-                                    <select>
-                                        <option value="0">Default</option>
-                                        <option value="0">Default</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4">
-                                <div class="filter__found">
-                                    <h6><span>16</span> Products found</h6>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-3">
-                                <div class="filter__option">
-                                    <span class="icon_grid-2x2"></span>
-                                    <span class="icon_ul"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div class="row">
 
                         <section class="featured spad">
@@ -187,7 +160,7 @@
                                                 <a href="@Url.Action("DisplayDetails", "Pizzas" ,new {  id=item.Id })">
                                                     <div class="featured__item__text">
                                                         <h6> @Html.DisplayFor(modelItem => item.Name)</h6>
-                                                        <h5>@Html.DisplayFor(modelItem => item.Price)$</h5>
+                                                        <h5>@Html.DisplayFor(modelItem => item.Price)</h5>
                                                     </div>
                                                 </a>
                                             </div>
@@ -208,6 +181,7 @@
                     </div>
                 </div>
             </div>
+            </div>
     </section>
 
     
@@ -224,4 +198,4 @@
 
 
 </body>
-
+</html>
