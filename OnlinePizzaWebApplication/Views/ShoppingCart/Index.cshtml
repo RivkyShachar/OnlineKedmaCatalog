@@ -39,11 +39,7 @@
     <header class="header" dir="rtl">
         <div class="container">
             <div class="row">
-                @* <div class="col-lg-3">
-                <div class="header__logo">
-                <a href="./index.html"><img src="img/logo.png" alt=""></a>
-                </div>
-                </div>*@
+             
                 <div class="col-lg-6">
                     <nav class="header__menu">
 
@@ -93,10 +89,11 @@
                                 @foreach (var line in Model.ShoppingCart.ShoppingCartItems)
                                 {
                                     <tr>
-                                       <td class="shoping__cart__item">
-                                            <img src="@line.Pizza.ImageUrl" alt="">
+                                        <td class="shoping__cart__item">
+                                            <img src="@line.Pizza.ImageUrl" alt="" style="max-width: 100px;">
                                             <h5>@line.Pizza.Name</h5>
                                         </td>
+
                                         <td class="shoping__cart__price">
                                             @line.Pizza.Barcode.ToString("c")
                                         </td>

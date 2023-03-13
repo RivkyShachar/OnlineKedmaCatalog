@@ -23,7 +23,6 @@ namespace OnlinePizzaWebApplication.Models
         public string Name { get; set; }
 
         [DisplayName("ברקוד")]
-        [Range(0, 1000)]
         [DataType(DataType.Currency)]
         public decimal Barcode { get; set; }
 
