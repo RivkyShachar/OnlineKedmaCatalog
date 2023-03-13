@@ -38,7 +38,6 @@ namespace OnlinePizzaWebApplication.Models
         [DataType(DataType.ImageUrl)]
         public string ImageUrl { get; set; }
 
-        public bool IsPizzaOfTheWeek { get; set; }
 
         [DisplayName("Select Category")]
         public int CategoriesId { get; set; }

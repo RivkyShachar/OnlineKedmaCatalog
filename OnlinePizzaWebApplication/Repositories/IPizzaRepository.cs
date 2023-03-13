@@ -9,7 +9,6 @@ namespace OnlinePizzaWebApplication.Repositories
     public interface IPizzaRepository
     {
         IEnumerable<Pizzas> Pizzas { get; }
-        IEnumerable<Pizzas> PizzasOfTheWeek { get; }
 
         Pizzas GetById(int? id);
         Task<Pizzas> GetByIdAsync(int? id);

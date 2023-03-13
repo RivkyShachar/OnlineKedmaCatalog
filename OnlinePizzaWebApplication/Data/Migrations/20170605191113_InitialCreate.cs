@@ -17,7 +17,6 @@ namespace OnlinePizzaWebApplication.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Description = table.Column<string>(nullable: true),
                     Image = table.Column<string>(nullable: true),
-                    IsPizzaOfTheWeek = table.Column<bool>(nullable: false),
                     Name = table.Column<string>(nullable: true),
                     Price = table.Column<double>(nullable: false)
                 },

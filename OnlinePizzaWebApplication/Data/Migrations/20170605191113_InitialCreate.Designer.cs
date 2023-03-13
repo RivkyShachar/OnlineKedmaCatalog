@@ -27,8 +27,6 @@ namespace OnlinePizzaWebApplication.Migrations
 
                     b.Property<string>("Image");
 
-                    b.Property<bool>("IsPizzaOfTheWeek");
-
                     b.Property<string>("Name");
 
                     b.Property<double>("Price");
