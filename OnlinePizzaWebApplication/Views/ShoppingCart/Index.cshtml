@@ -4,15 +4,22 @@
     var pageName = "Shopping Cart";
     ViewData["Title"] = pageName;
 }
-<html >
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Ogani Template">
     <meta name="keywords" content="Ogani, unica, creative, html">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Ogani | Template</title>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
+            integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"></script>
+    <title>HTML-to-PDF Example</title>
+   
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
 
@@ -39,15 +46,15 @@
     <header class="header" dir="rtl">
         <div class="container">
             <div class="row">
-             
+
                 <div class="col-lg-6">
                     <nav class="header__menu">
 
 
                         <ul>
-                            <li class="active"><a href="@Url.Action("index", "Home")">òîåã øàùé</a></li>
-                            <li class="active"><a href="@Url.Action("About", "Home")">òøéëä</a></li>
-                            <li class="active"><a href="@Url.Action("Contact","Home")">éöéøú ÷ùø</a></li>
+                            <li class="active"><a href="@Url.Action("index", "Home")">ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½</a></li>
+                            <li class="active"><a href="@Url.Action("About", "Home")">ï¿½ï¿½ï¿½ï¿½ï¿½</a></li>
+                            <li class="active"><a href="@Url.Action("Contact","Home")">ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½</a></li>
                             <li class="active"><a href="@Url.Action("Contact","Home")"> </a></li>
 
                         </ul>
@@ -77,7 +84,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="shoping__cart__table">
-                        <table>
+                        <table id="i">
                             <thead>
                                 <tr>
                                     <th class="shoping__product">Products</th>
@@ -100,12 +107,12 @@
                                         <td class="text-center">
                                             <a class="btn btn-default" asp-action="RemoveFromShoppingCart" asp-route-pizzaId="@line.Pizza.Id"><b>-</b></a><b>@line.AmountBoxes</b><a class="btn btn-default" asp-action="AddToShoppingCart" asp-route-pizzaId="@line.Pizza.Id"><b>+</b></a>
                                         </td>
-@*                                        <td class="text-center">
-                                            <form asp-action="UpdateShoppingCart" asp-route-pizzaId="@line.Pizza.Id">
-                                                <input type="number" name="amount" value="@line.Amount" min="1" max="100" />
-                                                <button type="submit" class="btn btn-primary">Update</button>
-                                            </form>
-                                        </td>*@
+                                        @*                                        <td class="text-center">
+                                                <form asp-action="UpdateShoppingCart" asp-route-pizzaId="@line.Pizza.Id">
+                                                    <input type="number" name="amount" value="@line.Amount" min="1" max="100" />
+                                                    <button type="submit" class="btn btn-primary">Update</button>
+                                                </form>
+                                            </td>*@
                                         <td class="shoping__cart__item__close">
                                             <span class="icon_close"></span>
                                         </td>
@@ -119,23 +126,28 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="shoping__cart__btns">
-                        <a href="@Url.Action("Index", "Home")" class="primary-btn cart-btn">äîùê ÷ðééä</a>
-                        <a href="@Url.Action("Save", "ShoppingCart")" class="primary-btn cart-btn cart-btn-right">ùîéøä </a>
+                        <a href="@Url.Action("Index", "Home")" class="primary-btn cart-btn">×”×ž×©×š ×§× ×™×™×”</a>
+                        <a href="@Url.Action("Save", "ShoppingCart")" class="primary-btn cart-btn cart-btn-right">×©×ž×™×¨×” </a>
                     </div>
-                <form method="post" action="@Url.Action("GeneratePdf", "ShoppingCart")">
-                    <button type="submit">Download PDF</button>
-                </form>
-                <form method="post" action="@Url.Action("SendEmailWithPdf", "ShoppingCart")">
-                    <label for="email">Email address:</label>
-                    <input type="email" name="email" required>
-                    <button type="submit">Send Email</button>
-                </form>
 
+                    <script>
+                        const button = document.getElementById('download-button');
+                        function generatePDF() {
+                            // Choose the element that your content will be rendered to.
+                            const element = document.getElementById('i');
+                            // Choose the element and save the PDF for your user.
+                            html2pdf().from(element).save();
+                        }
+
+                        button.addEventListener('click', generatePDF);
+                    </script>
                 </div>
-        </div>
+            </div>
+
+            
     </section>
+   
 
 </body>
-
 
 </html>

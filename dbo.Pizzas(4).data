@@ -1,0 +1,7 @@
+﻿SET IDENTITY_INSERT [dbo].[Pizzas] ON
+INSERT INTO [dbo].[Pizzas] ([Id], [Name], [Barcode], [weight], [Description], [ImageUrl], [CategoriesId]) VALUES (1, N'מלח ', N'7290003093410', N'0.5 g', N'img/BasicProduct/piruritGold.png', N'img/BasicProduct/chickenSoop.png', 2)
+INSERT INTO [dbo].[Pizzas] ([Id], [Name], [Barcode], [weight], [Description], [ImageUrl], [CategoriesId]) VALUES (2, N'מח ים', N'7290003093410', N'0.5 g', N'img/BasicProduct/piruritGold.png', N'img/BasicProduct/chickenSoop.png', 2)
+INSERT INTO [dbo].[Pizzas] ([Id], [Name], [Barcode], [weight], [Description], [ImageUrl], [CategoriesId]) VALUES (3, N'ח ', N'7290003093410', N'0.5 g', N'img/BasicProduct/piruritGold.png', N'img/BasicProduct/chickenSoop.png', 2)
+INSERT INTO [dbo].[Pizzas] ([Id], [Name], [Barcode], [weight], [Description], [ImageUrl], [CategoriesId]) VALUES (4, N'מלח ', N'7290003093410', N'0.5 g', N'img/BasicProduct/piruritGold.png', N'img/BasicProduct/chickenSoop.png', 2)
+
+SET IDENTITY_INSERT [dbo].[Pizzas] OFF
