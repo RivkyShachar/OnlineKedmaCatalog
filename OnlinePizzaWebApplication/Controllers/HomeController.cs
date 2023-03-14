@@ -36,6 +36,17 @@ namespace OnlinePizzaWebApplication.Controllers
             };
             return View(viewModel);
         }
+        public async Task<IActionResult> CategoryA(int categoryId)
+        {
+            var pizzas = await _pizzaRepo.GetAllIncludedAsync();
+            var pizzasSome = pizzas.Where(p=>p.Id==categoryId);
+            var viewModel = new PizzasCaregoriesViewModel
+            {
+                Categories = await _categoryRepo.GetAllAsync(),
+                Pizzas = pizzasSome
+            };
+            return View(viewModel);
+        }
 
         public async Task<IActionResult> About()
         {
