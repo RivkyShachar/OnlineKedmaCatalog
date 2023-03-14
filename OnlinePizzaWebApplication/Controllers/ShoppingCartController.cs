@@ -46,7 +46,7 @@ namespace OnlinePizzaWebApplication.Controllers
             {
                 await _shoppingCart.AddToCartAsync(selectedPizza, amount, amount);
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Home");
         }
 
         public async Task<IActionResult> RemoveFromShoppingCart(int pizzaId)
