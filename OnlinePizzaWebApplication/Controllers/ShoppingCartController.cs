@@ -89,5 +89,19 @@ namespace OnlinePizzaWebApplication.Controllers
             return RedirectToAction("Index");
         }
 
+        public async Task<IActionResult> Save()
+        {
+            var items = await _shoppingCart.GetShoppingCartItemsAsync();
+            _shoppingCart.ShoppingCartItems = items;
+
+            var shoppingCartViewModel = new ShoppingCartViewModel
+            {
+                ShoppingCart = _shoppingCart,
+                ShoppingCartTotal = _shoppingCart.GetShoppingCartTotal()
+            };
+
+            return View(shoppingCartViewModel);
+        }
+
     }
 }

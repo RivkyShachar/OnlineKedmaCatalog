@@ -40,6 +40,11 @@ namespace OnlinePizzaWebApplication.Controllers
             return View(await _categoryRepo.GetAllAsync());
         }
 
+        public async Task<IActionResult> ShowCategories()
+        {
+            return View(await _categoryRepo.GetAllAsync());
+        }
+
         public IActionResult Contact()
         {
             return View();

@@ -1,0 +1,13 @@
+﻿@model IEnumerable<Categories>
+
+                    
+<body dir="rtl">
+	<h4>קטגוריות</h4>
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li><a href="#">@Html.DisplayFor(modelItem => item.Name)</a></li>
+        }
+    </ul>
+</body>
+    
