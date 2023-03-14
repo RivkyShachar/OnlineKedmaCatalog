@@ -107,12 +107,7 @@
                                         <td class="text-center">
                                             <a class="btn btn-default" asp-action="RemoveFromShoppingCart" asp-route-pizzaId="@line.Pizza.Id"><b>-</b></a><b>@line.AmountBoxes</b><a class="btn btn-default" asp-action="AddToShoppingCart" asp-route-pizzaId="@line.Pizza.Id"><b>+</b></a>
                                         </td>
-                                        @*                                        <td class="text-center">
-                                                <form asp-action="UpdateShoppingCart" asp-route-pizzaId="@line.Pizza.Id">
-                                                    <input type="number" name="amount" value="@line.Amount" min="1" max="100" />
-                                                    <button type="submit" class="btn btn-primary">Update</button>
-                                                </form>
-                                            </td>*@
+        
                                         <td class="shoping__cart__item__close">
                                             <span class="icon_close"></span>
                                         </td>
@@ -130,17 +125,6 @@
                         <a href="@Url.Action("Save", "ShoppingCart")" class="primary-btn cart-btn cart-btn-right">שמירה </a>
                     </div>
 
-                    <script>
-                        const button = document.getElementById('download-button');
-                        function generatePDF() {
-                            // Choose the element that your content will be rendered to.
-                            const element = document.getElementById('i');
-                            // Choose the element and save the PDF for your user.
-                            html2pdf().from(element).save();
-                        }
-
-                        button.addEventListener('click', generatePDF);
-                    </script>
                 </div>
             </div>
 

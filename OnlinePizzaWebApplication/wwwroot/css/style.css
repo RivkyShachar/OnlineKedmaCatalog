@@ -1891,12 +1891,14 @@ ol {
 
 .shoping__cart__table {
 	margin-bottom: 30px;
+
 }
 
-.shoping__cart__table table {
-	width: 100%;
-	text-align: center;
-}
+	.shoping__cart__table table {
+		width: 100%;
+		text-align: center;
+		padding-bottom:50px;
+	}
 
 .shoping__cart__table table thead tr {
 	border-bottom: 1px solid #ebebeb;
