@@ -4,7 +4,7 @@
     var pageName = "Shopping Cart";
     ViewData["Title"] = pageName;
 }
-<html >
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Ogani Template">
@@ -39,15 +39,15 @@
     <header class="header" dir="rtl">
         <div class="container">
             <div class="row">
-             
+
                 <div class="col-lg-6">
                     <nav class="header__menu">
 
 
                         <ul>
-                            <li class="active"><a href="@Url.Action("index", "Home")">òîåã øàùé</a></li>
-                            <li class="active"><a href="@Url.Action("About", "Home")">òøéëä</a></li>
-                            <li class="active"><a href="@Url.Action("Contact","Home")">éöéøú ÷ùø</a></li>
+                            <li class="active"><a href="@Url.Action("index", "Home")">ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½</a></li>
+                            <li class="active"><a href="@Url.Action("About", "Home")">ï¿½ï¿½ï¿½ï¿½ï¿½</a></li>
+                            <li class="active"><a href="@Url.Action("Contact","Home")">ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½</a></li>
                             <li class="active"><a href="@Url.Action("Contact","Home")"> </a></li>
 
                         </ul>
@@ -100,12 +100,12 @@
                                         <td class="text-center">
                                             <a class="btn btn-default" asp-action="RemoveFromShoppingCart" asp-route-pizzaId="@line.Pizza.Id"><b>-</b></a><b>@line.AmountBoxes</b><a class="btn btn-default" asp-action="AddToShoppingCart" asp-route-pizzaId="@line.Pizza.Id"><b>+</b></a>
                                         </td>
-@*                                        <td class="text-center">
-                                            <form asp-action="UpdateShoppingCart" asp-route-pizzaId="@line.Pizza.Id">
-                                                <input type="number" name="amount" value="@line.Amount" min="1" max="100" />
-                                                <button type="submit" class="btn btn-primary">Update</button>
-                                            </form>
-                                        </td>*@
+                                        @*                                        <td class="text-center">
+                                                <form asp-action="UpdateShoppingCart" asp-route-pizzaId="@line.Pizza.Id">
+                                                    <input type="number" name="amount" value="@line.Amount" min="1" max="100" />
+                                                    <button type="submit" class="btn btn-primary">Update</button>
+                                                </form>
+                                            </td>*@
                                         <td class="shoping__cart__item__close">
                                             <span class="icon_close"></span>
                                         </td>
@@ -119,20 +119,20 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="shoping__cart__btns">
-                        <a href="@Url.Action("Index", "Home")" class="primary-btn cart-btn">äîùê ÷ðééä</a>
-                        <a href="@Url.Action("Index", "ShoppingCart")" class="primary-btn cart-btn cart-btn-right">òãëåï òâìä </a>
+                        <a href="@Url.Action("Index", "Home")" class="primary-btn cart-btn">ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½</a>
+                        <a href="@Url.Action("Index", "ShoppingCart")" class="primary-btn cart-btn cart-btn-right">ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ </a>
                     </div>
-                <form method="post" action="@Url.Action("GeneratePdf", "ShoppingCart")">
-                    <button type="submit">Download PDF</button>
-                </form>
-                <form method="post" action="@Url.Action("SendEmailWithPdf", "ShoppingCart")">
-                    <label for="email">Email address:</label>
-                    <input type="email" name="email" required>
-                    <button type="submit">Send Email</button>
-                </form>
+                    <form method="post" action="@Url.Action("GeneratePdf", "ShoppingCart")">
+                        <button type="submit">Download PDF</button>
+                    </form>
+                    <form method="post" action="@Url.Action("SendEmailWithPdf", "ShoppingCart")">
+                        <label for="email">Email address:</label>
+                        <input type="email" name="email" required>
+                        <button type="submit">Send Email</button>
+                    </form>
 
                 </div>
-        </div>
+            </div>
     </section>
 
 </body>
