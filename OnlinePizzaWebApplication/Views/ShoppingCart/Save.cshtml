@@ -4,18 +4,25 @@
     var pageName = "Save";
     ViewData["Title"] = pageName;
 }
-<html>
+<html dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Ogani Template">
     <meta name="keywords" content="Ogani, unica, creative, html">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ogani | Template</title>
-
+    <title>Kedma</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="html2pdf.bundle.min.js"></script>
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
-
+  
+    <!-- html2pdf CDN link -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
+            integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"></script>
     <!-- Css Styles -->
     <link rel="stylesheet" href="~/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="~/css/font-awesome.min.css" type="text/css">
@@ -72,11 +79,53 @@
         </div>
     </header>
     <!-- Shoping Cart Section Begin -->
-    <section class="shoping-cart spad">
+    <h2>הוסף את השם שלך:</h2>
+    <input type="text" id="name-input">
+    <button onclick="displayHeading()">אישור</button>
+
+    <div id="heading-container"></div>
+
+    
+
+
+    <section class="shoping-cart spad" >
+
         <div class="container">
+         
+            <style>
+                .my-element {
+                    padding-bottom: 40px;
+                }
+                table {
+                    border-collapse: collapse;
+                    width: 100%;
+                }
+
+                th,
+                td {
+                    text-align: center;
+                    padding: 8px;
+                    
+                    border: 1px solid black;
+                }
+
+                th {
+                    background-color: #ddd;
+                }
+            </style>
+
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="shoping__cart__table">
+                    <div  id="i">
+                        <script>
+                            function displayHeading() {
+                                const nameInput = document.getElementById("name-input").value;
+                                const headingContainer = document.getElementById("heading-container");
+                                const heading = document.createElement("p");
+                                heading.innerText = `שם: ${nameInput}`;
+                                headingContainer.appendChild(heading);
+                            }
+                        </script>
                         <table>
                             <thead>
                                 <tr>
@@ -105,24 +154,27 @@
                     </div>
                 </div>
             </div>
+
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="shoping__cart__btns">
-                        <a href="@Url.Action("Index", "Home")" class="primary-btn cart-btn">המשך קנייה</a>
-                        <a href="@Url.Action("Save", "ShoppingCart")" class="primary-btn cart-btn cart-btn-right">שמירה </a>
-                    </div>
-                    <form method="post" action="@Url.Action("GeneratePdf", "ShoppingCart")">
-                        <button type="submit">Download PDF</button>
-                    </form>
-                    <form method="post" action="@Url.Action("SendEmailWithPdf", "ShoppingCart")">
-                        <label for="email">Email address:</label>
-                        <input type="email" name="email" required>
-                        <button type="submit">Send Email</button>
-                    </form>
+                 <button id="download-button" class="btn btn-success">Download as PDF</button>
+                   <script>
+                const button = document.getElementById('download-button');
+
+                function generatePDF() {
+                    // Choose the element that your content will be rendered to.
+                    const element = document.getElementById('i');
+                    // Choose the element and save the PDF for your user.
+                    html2pdf().from(element).save();
+                }
+
+                button.addEventListener('click', generatePDF);
+            </script>
 
                 </div>
             </div>
     </section>
+
 
 </body>
 
