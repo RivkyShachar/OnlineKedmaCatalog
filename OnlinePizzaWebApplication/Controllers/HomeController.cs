@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using OnlineKedmaWebApplication.ViewModels;
 using OnlinePizzaWebApplication.Data;
 using OnlinePizzaWebApplication.Models;
 using OnlinePizzaWebApplication.Repositories;
@@ -27,13 +28,20 @@ namespace OnlinePizzaWebApplication.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            return View(await _pizzaRepo.GetAllIncludedAsync());
+
+            var viewModel = new PizzasCaregoriesViewModel
+            {
+                Categories = await _categoryRepo.GetAllAsync(),
+                Pizzas = await _pizzaRepo.GetAllIncludedAsync()
+            };
+            return View(viewModel);
         }
 
         public async Task<IActionResult> About()
         {
             return View(await _pizzaRepo.GetAllIncludedAsync());
         }
+
 
         public async Task<IActionResult> Categories()
         {

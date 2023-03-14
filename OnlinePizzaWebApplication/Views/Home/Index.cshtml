@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Pizzas>
+﻿@using OnlineKedmaWebApplication.ViewModels;
+@model PizzasCaregoriesViewModel
 
 @{
     var pageName = "Home page";
@@ -55,7 +56,6 @@
                             <li class="active"><a href="@Url.Action("About", "Home")">עריכה</a></li>
                             <li class="active"><a href="@Url.Action("Contact","Home")">יצירת קשר</a></li>
                             <li class="active"><a href="@Url.Action("Contact","Home")"> </a></li>
-
                         </ul>
                       
                     </nav>
@@ -86,24 +86,13 @@
                 <div class="col-lg-3 col-md-5">
                     <div class="sidebar">
                         <div class="sidebar__item" >
-                            @*@Html.Partial("ShowCategories")*@
                             <h4>קטגוריות</h4>
-
-                            <ul>
-                                <li><a href="#">מוצרי יסוד</a></li>
-                                <li><a href="#">קטניות</a></li>
-                                <li><a href="#">קמחים</a></li>
-                                <li><a href="#">פיצוחים</a></li>
-                                <li><a href="#">מוצרי אפיה</a></li>
-                                <li><a href="#">ממתקים</a></li>
-                                <li><a href="#">תבלינים</a></li>
-                                <li><a href="#">תבלינים בשקית</a></li>
-                                <li><a href="#">שימורים</a></li>
-                                <li><a href="#">שמנים ומיצים</a></li>
-                                <li><a href="#">מוצרי טבע</a></li>
-                                <li><a href="#">חטיפים מן הטבע</a></li>
-                                <li><a href="#">שמרלינג</a></li>
-                            </ul>
+                                <ul>
+                                    @foreach (var item in Model.Categories)
+                                    {
+                                        <li><a href="#">@Html.DisplayFor(modelItem => item.Name)</a></li>
+                                    }
+                                </ul>
                         </div>
                        
                       
@@ -118,7 +107,7 @@
                             <div class="container">
                                 @if (Model != null)
                                 {
-                                    @foreach (var item in Model)
+                                    @foreach (var item in Model.Pizzas)
                                     {
                                         <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables fresh-meat">
                                             <div class="featured__item">
