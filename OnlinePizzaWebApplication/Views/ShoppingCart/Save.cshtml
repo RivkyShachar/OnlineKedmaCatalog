@@ -4,7 +4,7 @@
     var pageName = "Save";
     ViewData["Title"] = pageName;
 }
-<html dir="rtl">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Ogani Template">
@@ -79,33 +79,48 @@
         </div>
     </header>
     <!-- Shoping Cart Section Begin -->
-    <h2>הוסף את השם שלך:</h2>
-    <input type="text" id="name-input">
-    <button onclick="displayHeading()">אישור</button>
-
-    <div id="heading-container"></div>
-
-    
-
-
     <section class="shoping-cart spad" >
-
         <div class="container">
-         
+            @*<div class="row">
+                <div class="col-lg-12">
+                    <div class="shoping__cart__table" id="i">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th class="shoping__product">שם מוצר</th>
+                                    <th>ברקוד</th>
+                                    <th>כמות בארגז</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var line in Model.ShoppingCart.ShoppingCartItems)
+                                {
+                                    <tr>
+                                        <td class="shoping__cart__price">
+                                            @line.Pizza.Name
+                                        </td>
+                                        <td class="shoping__cart__price">
+                                            @line.Pizza.Barcode
+                                        </td>
+                                        <td class="shoping__cart__price">
+                                            @line.Pizza.AmountInBox
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>*@
             <style>
-                .my-element {
-                    padding-bottom: 40px;
-                }
                 table {
                     border-collapse: collapse;
                     width: 100%;
                 }
 
-                th,
-                td {
+                th, td {
                     text-align: center;
                     padding: 8px;
-                    
                     border: 1px solid black;
                 }
 
@@ -116,16 +131,7 @@
 
             <div class="row">
                 <div class="col-lg-12">
-                    <div  id="i">
-                        <script>
-                            function displayHeading() {
-                                const nameInput = document.getElementById("name-input").value;
-                                const headingContainer = document.getElementById("heading-container");
-                                const heading = document.createElement("p");
-                                heading.innerText = `שם: ${nameInput}`;
-                                headingContainer.appendChild(heading);
-                            }
-                        </script>
+                    <div class="shoping__cart__table" id="i">
                         <table>
                             <thead>
                                 <tr>
@@ -172,6 +178,7 @@
             </script>
 
                 </div>
+            </div>
             </div>
     </section>
 

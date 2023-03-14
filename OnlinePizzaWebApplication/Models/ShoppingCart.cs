@@ -5,6 +5,8 @@ using OnlinePizzaWebApplication.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace OnlinePizzaWebApplication.Models
@@ -35,7 +37,7 @@ namespace OnlinePizzaWebApplication.Models
 
             return new ShoppingCart(context) { ShoppingCartId = cartId };
         }
-
+        
         public async Task AddToCartAsync(Pizzas pizza, int amountB, int amountS)
         {
             var shoppingCartItem =
@@ -124,8 +126,7 @@ namespace OnlinePizzaWebApplication.Models
 
             return localAmount;
         }
-
-
+    
 
 
 

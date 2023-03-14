@@ -105,7 +105,7 @@
                                             @line.Pizza.Barcode
                                         </td>
                                         <td class="text-center">
-                                            <a class="btn btn-default" asp-action="RemoveFromShoppingCart" asp-route-pizzaId="@line.Pizza.Id"><b>-</b></a><b>@line.AmountBoxes</b><a class="btn btn-default" asp-action="AddToShoppingCart" asp-route-pizzaId="@line.Pizza.Id"><b>+</b></a>
+                                        <a class="btn btn-default" asp-action="RemoveFromShoppingCart" asp-route-pizzaId="@line.Pizza.Id"><b>-</b></a>          <b>@line.AmountBoxes</b>          <a class="btn btn-default" asp-action="AddToShoppingCart" asp-route-pizzaId="@line.Pizza.Id"><b>+</b></a>
                                         </td>
         
                                         <td class="shoping__cart__item__close">
@@ -121,8 +121,16 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="shoping__cart__btns">
+                   @*     <form>
+                            <button id="submitBtn" type="submit">Send Email</button>
+                        </form>*@
+
+
+                        <form>
+                            <button id="submitBtn" type="submit">Send Email</button>
+                        </form>
                         <a href="@Url.Action("Index", "Home")" class="primary-btn cart-btn">המשך קנייה</a>
-                        <a href="@Url.Action("Save", "ShoppingCart")" class="primary-btn cart-btn cart-btn-right">שמירה </a>
+                        <a href="@Url.Action("Save", "ShoppingCart")" class="btn btn-success cart-btn-right">שמירה </a>
                     </div>
 
                 </div>
@@ -131,7 +139,29 @@
             
     </section>
    
+    @section Scripts {
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("#submitBtn").click(function (event) {
+                    event.preventDefault(); // prevent the default submit behavior
 
+                    $.ajax({
+                        type: "POST",
+                        url: "/ShoppingCart/SendEmail",
+                        success: function () {
+                            alert("Email sent successfully!");
+                        },
+                        error: function () {
+                            alert("Failed to send email.");
+                        }
+                    });
+                });
+            });
+         
+        </script>
+
+    }
 </body>
 
 </html>
