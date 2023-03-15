@@ -138,6 +138,8 @@
                                     <th class="shoping__product">שם מוצר</th>
                                     <th>ברקוד</th>
                                     <th>כמות בארגז</th>
+                                    <th>כמות chjhsv</th>
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -151,7 +153,10 @@
                                             @line.Pizza.Barcode
                                         </td>
                                         <td class="shoping__cart__price">
-                                            @line.Pizza.AmountInBox
+                                            @line.AmountBoxes
+                                        </td>
+                                        <td class="shoping__cart__price">
+                                            @line.AmountSingles
                                         </td>
                                     </tr>
                                 }

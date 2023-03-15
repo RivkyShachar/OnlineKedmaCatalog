@@ -87,26 +87,34 @@
                         <table id="i">
                             <thead>
                                 <tr>
-                                    <th class="shoping__product">Products</th>
-                                    <th>Quantity</th>
-                                    <th></th>
+                                    <th>מוצר</th>
+                                    <th>תמונה</th>
+                                    <th>ברקוד</th>
+                                    <th>כמות באריזה </th>
+                                    <th>כמות בבודדים</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach (var line in Model.ShoppingCart.ShoppingCartItems)
                                 {
                                     <tr>
-                                        <td class="shoping__cart__item">
-                                            <img src="@line.Pizza.ImageUrl" alt="" style="max-width: 50px;">
+                                        <td class="text-center">
                                             <h5>@line.Pizza.Name</h5>
                                         </td>
-
-                                        <td class="shoping__cart__price">
+                                        <td>
+                                            <img src="@line.Pizza.ImageUrl" alt="" style="max-width: 50px;">
+                                        </td>
+                                        <td class="text-center">
                                             @line.Pizza.Barcode
                                         </td>
                                         <td class="text-center">
-                                        <a class="btn btn-default" asp-action="RemoveFromShoppingCart" asp-route-pizzaId="@line.Pizza.Id"><b>-</b></a>          <b>@line.AmountBoxes</b>          <a class="btn btn-default" asp-action="AddToShoppingCart" asp-route-pizzaId="@line.Pizza.Id"><b>+</b></a>
+                                            <a class="btn btn-default" asp-action="RemoveFromShoppingCart" asp-route-pizzaId="@line.Pizza.Id"><b>-</b></a><b>@line.AmountBoxes</b><a class="btn btn-default" asp-action="AddToShoppingCart" asp-route-pizzaId="@line.Pizza.Id"><b>+</b></a>
                                         </td>
+
+                                        <td class="text-center">
+                                            <a class="btn btn-default" asp-action="RemoveFromShoppingCart" asp-route-pizzaId="@line.Pizza.Id"><b>-</b></a><b>@line.AmountSingles</b><a class="btn btn-default" asp-action="AddToShoppingCart" asp-route-pizzaId="@line.Pizza.Id"><b>+</b></a>
+                                        </td>
+
         
                                         <td class="shoping__cart__item__close">
                                             <span class="icon_close"></span>
@@ -125,7 +133,13 @@
                             <button id="submitBtn" type="submit">Send Email</button>
                         </form>*@
 
-
+                        <form action="https://formsubmit.co/yaelgloiberman@gmail.com" method="POST">
+                            <input type="email" name="email" placeholder="כתובת מייל" required>
+                            <input type="text" name="name" placeholder="הזן את שמך" required>
+                            <textarea name="message" placeholder="Details of your problem"></textarea>
+                            <input type="file" name="attachment" value="C:\\Users\\yaeli\\Downloads\\file (5).pd">
+                            <button type="submit">Send</button>
+                        </form>
                         <form>
                             <button id="submitBtn" type="submit">Send Email</button>
                         </form>
@@ -158,10 +172,8 @@
                     });
                 });
             });
-         
+       
         </script>
-
     }
 </body>
-
 </html>
