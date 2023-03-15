@@ -108,11 +108,11 @@
                                             @line.Pizza.Barcode
                                         </td>
                                         <td class="text-center">
-                                            <a class="btn btn-default" asp-action="RemoveFromShoppingCart" asp-route-pizzaId="@line.Pizza.Id"><b>-</b></a><b>@line.AmountBoxes</b><a class="btn btn-default" asp-action="AddToShoppingCart" asp-route-pizzaId="@line.Pizza.Id"><b>+</b></a>
+                                            <a class="btn btn-default" asp-action="RemoveFromShoppingCart" asp-route-pizzaId="@line.Pizza.Id"><b>-</b></a><b>@line.AmountBoxes</b><a class="btn btn-default" asp-action="AddToShoppingCartBoxes" asp-route-pizzaId="@line.Pizza.Id"><b>+</b></a>
                                         </td>
 
                                         <td class="text-center">
-                                            <a class="btn btn-default" asp-action="RemoveFromShoppingCart" asp-route-pizzaId="@line.Pizza.Id"><b>-</b></a><b>@line.AmountSingles</b><a class="btn btn-default" asp-action="AddToShoppingCart" asp-route-pizzaId="@line.Pizza.Id"><b>+</b></a>
+                                            <a class="btn btn-default" asp-action="RemoveFromShoppingCart" asp-route-pizzaId="@line.Pizza.Id"><b>-</b></a><b>@line.AmountSingles</b><a class="btn btn-default" asp-action="AddToShoppingCartSingles" asp-route-pizzaId="@line.Pizza.Id"><b>+</b></a>
                                         </td>
 
         
