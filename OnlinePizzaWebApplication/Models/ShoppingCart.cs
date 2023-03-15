@@ -38,7 +38,7 @@ namespace OnlinePizzaWebApplication.Models
             return new ShoppingCart(context) { ShoppingCartId = cartId };
         }
         
-        public async Task AddToCartAsync(Pizzas pizza, int amountB, int amountS)
+        public async Task AddToCartAsyncBoxes(Pizzas pizza, int amountB, int amountS)
         {
             var shoppingCartItem =
                     await _appDbContext.ShoppingCartItems.SingleOrDefaultAsync(
@@ -63,7 +63,104 @@ namespace OnlinePizzaWebApplication.Models
 
             await _appDbContext.SaveChangesAsync();
         }
+        public async Task AddToCartAsyncSingles(Pizzas pizza, int amountB, int amountS)
+        {
+            var shoppingCartItem =
+                    await _appDbContext.ShoppingCartItems.SingleOrDefaultAsync(
+                        s => s.Pizza.Id == pizza.Id && s.ShoppingCartId == ShoppingCartId);
 
+            if (shoppingCartItem == null)
+            {
+                shoppingCartItem = new ShoppingCartItem
+                {
+                    ShoppingCartId = ShoppingCartId,
+                    Pizza = pizza,
+                    AmountBoxes = amountB,
+                    AmountSingles = amountS
+                };
+
+                _appDbContext.ShoppingCartItems.Add(shoppingCartItem);
+            }
+            else
+            {
+                shoppingCartItem.AmountSingles++;
+            }
+
+            await _appDbContext.SaveChangesAsync();
+        }
+        public async Task UpdateToCartAsyncSingles(Pizzas pizza, int amountS)
+        {
+            var shoppingCartItem =
+                    await _appDbContext.ShoppingCartItems.SingleOrDefaultAsync(
+                        s => s.Pizza.Id == pizza.Id && s.ShoppingCartId == ShoppingCartId);
+
+            if (shoppingCartItem == null)
+            {
+                shoppingCartItem = new ShoppingCartItem
+                {
+                    ShoppingCartId = ShoppingCartId,
+                    Pizza = pizza,
+                    AmountSingles = amountS
+                };
+
+                _appDbContext.ShoppingCartItems.Add(shoppingCartItem);
+            }
+            else
+            {
+                shoppingCartItem.AmountSingles=amountS;
+            }
+
+            await _appDbContext.SaveChangesAsync();
+        }
+        public async Task UpdateToCartAsyncBoxes(Pizzas pizza, int amountB)
+        {
+            var shoppingCartItem =
+                    await _appDbContext.ShoppingCartItems.SingleOrDefaultAsync(
+                        s => s.Pizza.Id == pizza.Id && s.ShoppingCartId == ShoppingCartId);
+
+            if (shoppingCartItem == null)
+            {
+                shoppingCartItem = new ShoppingCartItem
+                {
+                    ShoppingCartId = ShoppingCartId,
+                    Pizza = pizza,
+                    AmountBoxes = amountB,
+                };
+
+                _appDbContext.ShoppingCartItems.Add(shoppingCartItem);
+            }
+            else
+            {
+                shoppingCartItem.AmountBoxes = amountB;
+            }
+
+            await _appDbContext.SaveChangesAsync();
+        }
+        public async Task AddToCartAsync(Pizzas pizza, int amountB, int amountS)
+        {
+            var shoppingCartItem =
+                    await _appDbContext.ShoppingCartItems.SingleOrDefaultAsync(
+                        s => s.Pizza.Id == pizza.Id && s.ShoppingCartId == ShoppingCartId);
+
+            if (shoppingCartItem == null)
+            {
+                shoppingCartItem = new ShoppingCartItem
+                {
+                    ShoppingCartId = ShoppingCartId,
+                    Pizza = pizza,
+                    AmountBoxes = amountB,
+                    AmountSingles = amountS
+                };
+
+                _appDbContext.ShoppingCartItems.Add(shoppingCartItem);
+            }
+            else
+            {
+                shoppingCartItem.AmountBoxes++;
+            }
+
+            await _appDbContext.SaveChangesAsync();
+        }
         public async Task<int> RemoveFromCartAsync(Pizzas pizza)
         {
             var shoppingCartItem =

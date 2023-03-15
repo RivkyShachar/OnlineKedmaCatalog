@@ -1,5 +1,6 @@
 @model ShoppingCartViewModel
 
+
 @{
     var pageName = "Shopping Cart";
     ViewData["Title"] = pageName;
@@ -52,9 +53,9 @@
 
 
                         <ul>
-                            <li class="active"><a href="@Url.Action("index", "Home")">���� ����</a></li>
-                            <li class="active"><a href="@Url.Action("About", "Home")">�����</a></li>
-                            <li class="active"><a href="@Url.Action("Contact","Home")">����� ���</a></li>
+                            <li class="active"><a href="@Url.Action("index", "Home")">עמוד ראשי</a></li>
+                            <li class="active"><a href="@Url.Action("About", "Home")">עריכה</a></li>
+                            <li class="active"><a href="@Url.Action("Contact","Home")">צור קשר</a></li>
                             <li class="active"><a href="@Url.Action("Contact","Home")"> </a></li>
 
                         </ul>
@@ -105,24 +106,44 @@
                                             <img src="@line.Pizza.ImageUrl" alt="" style="max-width: 50px;">
                                         </td>
                                         <td class="text-center">
-                                            @line.Pizza.Barcode
-                                        </td>
-                                        <td class="text-center">
-                                            <a class="btn btn-default" asp-action="RemoveFromShoppingCart" asp-route-pizzaId="@line.Pizza.Id"><b>-</b></a><b>@line.AmountBoxes</b><a class="btn btn-default" asp-action="AddToShoppingCartBoxes" asp-route-pizzaId="@line.Pizza.Id"><b>+</b></a>
-                                        </td>
-
-                                        <td class="text-center">
-                                            <a class="btn btn-default" asp-action="RemoveFromShoppingCart" asp-route-pizzaId="@line.Pizza.Id"><b>-</b></a><b>@line.AmountSingles</b><a class="btn btn-default" asp-action="AddToShoppingCartSingles" asp-route-pizzaId="@line.Pizza.Id"><b>+</b></a>
+                                            <a class="btn btn-default" asp-action="UpdateToShoppingCartSingles" asp-route-pizzaId="@line.Pizza.Id" asp-route-quantity="@line.AmountSingles" id="updateLinkSingles">
+                                                <b>עדכן בודדים</b>
+                                            </a>
+                                            <input id="singlesInput" type="number" name="quantity" value="@line.AmountSingles" onchange="updateLinkHrefSingles()" />
                                         </td>
 
-        
-                                        <td class="shoping__cart__item__close">
-                                            <span class="icon_close"></span>
+                                        <script>
+                                            function updateLinkHrefSingles() {
+                                                var linkS = document.getElementById("updateLinkSingles");
+                                                var quantityInputS = document.getElementById("singlesInput");
+                                                var updatedHrefS = linkS.href.replace(/quantity=\d+/, 'quantity=' + quantityInputS.value);
+                                                linkS.href = updatedHrefS;
+                                            }
+                                        </script>
+
+                                        <td class="text-center">
+                                            <a class="btn btn-default" asp-action="UpdateToShoppingCartBoxes" asp-route-pizzaId="@line.Pizza.Id" asp-route-quantityB="@line.AmountBoxes" id="updateLinkBoxes">
+                                                <b>עדכן ארגזים</b>
+                                            </a>
+                                            <input id="boxesInput" type="number" name="quantityB" value="@line.AmountBoxes" onchange="updateLinkHrefBoxes()" />
                                         </td>
+
+                                        <script>
+                                            function updateLinkHrefBoxes() {
+                                                var link = document.getElementById("updateLinkBoxes");
+                                                var quantityInput = document.getElementById("boxesInput");
+                                                var updatedHref = link.href.replace(/quantityB=\d+/, 'quantityB=' + quantityInput.value);
+                                                link.href = updatedHref;
+                                            }
+                                        </script>
+
+                                       
+
                                     </tr>
                                 }
                             </tbody>
                         </table>
+
                     </div>
                 </div>
             </div>
@@ -173,7 +194,23 @@
                 });
             });
        
+        </script>}
+        <script>
+            function addToCart(actionUrl, id, value) {
+                $.ajax({
+                    type: 'POST',
+                    url: actionUrl,
+                    data: { pizzaId: id, amount: value },
+                    success: function () {
+                        window.location.reload(); // reload the page after successful update
+                    },
+                    error: function () {
+                        alert('An error occurred while updating the shopping cart.');
+                    }
+                });
+            }
         </script>
-    }
+
+
 </body>
 </html>

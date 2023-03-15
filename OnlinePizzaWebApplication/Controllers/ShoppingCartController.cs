@@ -12,6 +12,8 @@ using System.Net;
 using Microsoft.AspNetCore.Http;
 using Org.BouncyCastle.Asn1;
 using System.Collections.Specialized;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
 namespace OnlinePizzaWebApplication.Controllers
 {
@@ -49,7 +51,7 @@ namespace OnlinePizzaWebApplication.Controllers
 
             if (selectedPizza != null)
             {
-                await _shoppingCart.AddToCartAsync(selectedPizza, amount, amount);
+                await _shoppingCart.AddToCartAsyncBoxes(selectedPizza, amount, amount);
             }
             return RedirectToAction("Index");
         }
@@ -60,10 +62,32 @@ namespace OnlinePizzaWebApplication.Controllers
 
             if (selectedPizza != null)
             {
-                await _shoppingCart.AddToCartAsync(selectedPizza, amount, amount);
+                await _shoppingCart.AddToCartAsyncSingles(selectedPizza, amount, amount);
             }
             return RedirectToAction("Index");
         }
+        public async Task<IActionResult> UpdateToShoppingCartSingles(int pizzaId, int quantity)
+        {
+           var selectedPizza = await _pizzaRepository.GetByIdAsync(pizzaId);
+
+            if (selectedPizza != null)
+            {
+                await _shoppingCart.UpdateToCartAsyncSingles(selectedPizza, quantity);
+            }
+            return RedirectToAction("Index");
+        }
+        public async Task<IActionResult> UpdateToShoppingCartBoxes(int pizzaId, int quantityB)
+        {
+            var selectedPizza = await _pizzaRepository.GetByIdAsync(pizzaId);
+
+            if (selectedPizza != null)
+            {
+                await _shoppingCart.UpdateToCartAsyncBoxes(selectedPizza, quantityB);
+            }
+            return RedirectToAction("Index");
+        }
+      
+
 
         public async Task<IActionResult> AddToShoppingCart1(int pizzaId, int amount = 1)
         {
@@ -167,8 +191,8 @@ namespace OnlinePizzaWebApplication.Controllers
         //    // Redirect to the previous page
         //    return RedirectToAction("Index");
         //}
+    
 
-      
 
         [HttpPost]
         public IActionResult SendEmail()
