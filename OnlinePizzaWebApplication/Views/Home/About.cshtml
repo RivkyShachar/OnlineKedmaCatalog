@@ -117,7 +117,7 @@
                    
                     <td>
 
-                        <img src="@item.ImageUrl" alt="@item.Name" style="max-width: 70px;" />
+                        <img src="@Url.Content(@item.ImageUrl)" style="max-width: 70px;" />
                     </td>
                     <td>
                         <a href="@Url.Action("ListCategory", "Pizzas", new { categoryId = item.Category.Id })">
