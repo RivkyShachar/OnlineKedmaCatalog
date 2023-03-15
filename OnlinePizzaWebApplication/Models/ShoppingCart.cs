@@ -112,6 +112,19 @@ namespace OnlinePizzaWebApplication.Models
 
             await _appDbContext.SaveChangesAsync();
         }
+        public async Task UpdatePrice(Pizzas pizza, int price)
+        {
+            var shoppingCartItem =
+                    await _appDbContext.ShoppingCartItems.SingleOrDefaultAsync(
+                        s => s.Pizza.Id == pizza.Id && s.ShoppingCartId == ShoppingCartId);
+
+                shoppingCartItem.Pizza.Price = price;
+            
+
+            await _appDbContext.SaveChangesAsync();
+        }
+
+
         public async Task UpdateToCartAsyncBoxes(Pizzas pizza, int amountB)
         {
             var shoppingCartItem =

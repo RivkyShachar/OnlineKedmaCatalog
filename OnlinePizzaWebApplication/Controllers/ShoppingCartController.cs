@@ -76,6 +76,16 @@ namespace OnlinePizzaWebApplication.Controllers
             }
             return RedirectToAction("Index");
         }
+        public async Task<IActionResult> UpdatePrice(int pizzaId, int price)
+        {
+            var selectedPizza = await _pizzaRepository.GetByIdAsync(pizzaId);
+
+            if (selectedPizza != null)
+            {
+                await _shoppingCart.UpdatePrice(selectedPizza, price);
+            }
+            return RedirectToAction("Index");
+        }
         public async Task<IActionResult> UpdateToShoppingCartBoxes(int pizzaId, int quantityB)
         {
             var selectedPizza = await _pizzaRepository.GetByIdAsync(pizzaId);

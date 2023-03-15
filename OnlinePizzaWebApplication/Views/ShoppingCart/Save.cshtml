@@ -139,6 +139,8 @@
                                     <th>ברקוד</th>
                                     <th>כמות בארגז</th>
                                     <th>כמות ביחידה</th>
+                                    <th>מחיר </th>
+
 
                                 </tr>
                             </thead>
@@ -158,6 +160,13 @@
                                         <td class="shoping__cart__price">
                                             @line.AmountSingles
                                         </td>
+                                        <td class="shoping__cart__price">
+                                            @{
+                                                float totalPrice = ((line.AmountSingles * line.AmountBoxes) + line.AmountSingles) * line.Pizza.Price;
+                                            }
+                                            @totalPrice.ToString("c")
+                                        </td>
+
                                     </tr>
                                 }
                             </tbody>

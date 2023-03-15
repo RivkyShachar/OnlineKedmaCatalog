@@ -33,6 +33,11 @@
     <link rel="stylesheet" href="~/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="~/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="~/css/style.css" type="text/css">
+    <style>
+        input[type="number"] {
+            width: 70px;
+        }
+    </style>
 </head>
 <body>
 
@@ -93,6 +98,8 @@
                                     <th>ברקוד</th>
                                     <th>כמות באריזה </th>
                                     <th>כמות בבודדים</th>
+                                    <th>מחיר</th>
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -137,8 +144,22 @@
                                                 linkS.href = updatedHrefS;
                                             }
                                         </script>
+                                       
+                                        <td class="text-center">
+                                            <a class="btn btn-default" asp-action="UpdatePrice" asp-route-pizzaId="@line.Pizza.Id" asp-route-price="@line.Pizza.Price" id="updatePrice-@line.Pizza.Id">
+                                                <b>עדכון מחיר</b>
+                                            </a>
+                                            <input id="priceInput-@line.Pizza.Id" type="number" name="price" value="@line.Pizza.Price" onchange="UpdatePrice('@line.Pizza.Id',this.value)" />
+                                        </td>
 
-
+                                        <script>
+                                            function UpdatePrice(lineItemId, price) {
+                                                var linkS = document.getElementById("updatePrice-" + lineItemId);
+                                                var quantityInputS = document.getElementById("priceInput-" + lineItemId);
+                                                var updatedHrefS = linkS.href.replace(/price=\d+/, 'price=' + quantityInputS.value);
+                                                linkS.href = updatedHrefS;
+                                            }
+                                        </script>
                                     </tr>
                                 }
                             </tbody>
