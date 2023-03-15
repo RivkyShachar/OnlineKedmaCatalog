@@ -38,7 +38,7 @@ namespace OnlinePizzaWebApplication.Models
         public string ImageUrl { get; set; }
 
         public float Price { get; set; }
-
+        [DisplayName("כמות בארגז")]
         public float AmountInBox { get; set; }
         
         [DisplayName("Select Category")]

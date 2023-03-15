@@ -90,11 +90,8 @@
                         @Html.DisplayNameFor(model => model.Barcode)
                     </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Weight)
+                    @Html.DisplayNameFor(model => model.AmountInBox)
                 </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Description)
-                    </th>
                     <th>
                         @Html.DisplayNameFor(model => model.ImageUrl)
                     </th>
@@ -115,11 +112,9 @@
                         @Html.DisplayFor(modelItem => item.Barcode)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Weight)
+                        @Html.DisplayFor(modelItem => item.AmountInBox)
                     </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Description)
-                    </td>
+                   
                     <td>
 
                         <img src="@item.ImageUrl" alt="@item.Name" style="max-width: 70px;" />

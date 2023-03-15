@@ -8,10 +8,8 @@
 
 <form asp-action="Edit">
     <div class="form-horizontal">
-        <h4>Pizzas</h4>
-        <hr />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="Id" />
         <div class="form-group">
             <label asp-for="Name" class="col-md-2 control-label"></label>
             <div class="col-md-10">
@@ -27,17 +25,10 @@
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="Weight" class="col-md-2 control-label"></label>
+            <label asp-for="AmountInBox" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="Weight" class="form-control" />
-                <span asp-validation-for="Weight" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="Description" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
+                <input asp-for="AmountInBox" class="form-control" />
+                <span asp-validation-for="AmountInBox" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
@@ -47,18 +38,34 @@
                 <span asp-validation-for="ImageUrl" class="text-danger"></span>
             </div>
         </div>
+
         <div class="form-group">
             <label asp-for="CategoriesId" class="control-label col-md-2"></label>
-            <div class="col-md-10">
-                <select asp-for="CategoriesId" class="form-control" asp-items="ViewBag.CategoriesId"></select>
+            <div class="col-md-10 dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownCategories" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Select category
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownCategories">
+                    @foreach (var category in ViewBag.CategoriesId)
+                    {
+                        <a class="dropdown-item" href="#" data-value="@category.Value">@category.Text</a>
+                    }
+                </div>
+                <input asp-for="CategoriesId" />
                 <span asp-validation-for="CategoriesId" class="text-danger"></span>
             </div>
         </div>
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </div>
+    </div>
+
+
+
+
     </div>
 </form>
 
