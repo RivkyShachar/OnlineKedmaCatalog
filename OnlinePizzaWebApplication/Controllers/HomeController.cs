@@ -32,14 +32,17 @@ namespace OnlinePizzaWebApplication.Controllers
             var viewModel = new PizzasCaregoriesViewModel
             {
                 Categories = await _categoryRepo.GetAllAsync(),
-                Pizzas = await _pizzaRepo.GetAllIncludedAsync()
+                Pizzas = await _context.Pizzas.Include(p => p.Category).Select(p => p).OrderBy(p => p.Category).ToListAsync()
+
             };
             return View(viewModel);
         }
         public async Task<IActionResult> CategoryA(int categoryId)
         {
             var pizzas = await _pizzaRepo.GetAllIncludedAsync();
-            var pizzasSome = pizzas;//Where(p=>p.CategoriesId==categoryId);
+            var pizzasSome= await _context.Pizzas.Where(p => p.CategoriesId == categoryId)
+    .ToListAsync();
+            //var pizzasSome = pizzas;//Where(p=>p.CategoriesId==categoryId);
             var viewModel = new PizzasCaregoriesViewModel
             {
                 Categories = await _categoryRepo.GetAllAsync(),
