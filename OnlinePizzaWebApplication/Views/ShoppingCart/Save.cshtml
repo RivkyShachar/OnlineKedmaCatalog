@@ -1,4 +1,5 @@
-﻿@model ShoppingCartViewModel
+﻿@using System.Globalization;
+@model ShoppingCartViewModel
 
 @{
     var pageName = "Save";
@@ -164,7 +165,7 @@
                                             @{
                                                 float totalPrice = ((line.AmountSingles * line.AmountBoxes) + line.AmountSingles) * line.Pizza.Price;
                                             }
-                                            @totalPrice.ToString("c")
+                                            @totalPrice.ToString("c0", new CultureInfo("he-IL"))
                                         </td>
 
                                     </tr>
