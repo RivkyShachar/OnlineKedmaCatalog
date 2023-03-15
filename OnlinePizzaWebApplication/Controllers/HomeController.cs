@@ -39,7 +39,7 @@ namespace OnlinePizzaWebApplication.Controllers
         public async Task<IActionResult> CategoryA(int categoryId)
         {
             var pizzas = await _pizzaRepo.GetAllIncludedAsync();
-            var pizzasSome = pizzas.Where(p=>p.Id==categoryId);
+            var pizzasSome = pizzas;//Where(p=>p.CategoriesId==categoryId);
             var viewModel = new PizzasCaregoriesViewModel
             {
                 Categories = await _categoryRepo.GetAllAsync(),
