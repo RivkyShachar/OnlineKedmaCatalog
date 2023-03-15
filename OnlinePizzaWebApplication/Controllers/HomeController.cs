@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,7 @@ using OnlineKedmaWebApplication.ViewModels;
 using OnlinePizzaWebApplication.Data;
 using OnlinePizzaWebApplication.Models;
 using OnlinePizzaWebApplication.Repositories;
+using OnlinePizzaWebApplication.ViewModels;
 
 namespace OnlinePizzaWebApplication.Controllers
 {
@@ -386,7 +388,14 @@ namespace OnlinePizzaWebApplication.Controllers
             return _categoryRepo.Exists(id);
         }
 
-
+        [AllowAnonymous]
+        public IActionResult Password(string returnUrl)
+        {
+            return View(new LoginViewModel
+            {
+                ReturnUrl = returnUrl
+            });
+        }
 
     }
 

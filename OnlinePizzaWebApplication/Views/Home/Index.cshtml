@@ -53,7 +53,9 @@
 
                         <ul>
                             <li class="active"><a href="@Url.Action("index", "Home")">עמוד ראשי</a></li>
-                            <li class="active"><a href="@Url.Action("About", "Home")">עריכה</a></li>
+                            <li class="active"><a asp-controller="Home" asp-action="Password" asp-route-fromIndex="true">עריכה</a></li>
+
+
                             <li class="active"><a href="@Url.Action("Contact","Home")">יצירת קשר</a></li>
                             <li class="active"><a href="@Url.Action("Contact","Home")"> </a></li>
                         </ul>

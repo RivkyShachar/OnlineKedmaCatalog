@@ -69,7 +69,6 @@ namespace OnlinePizzaWebApplication.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
-            return RedirectToAction("Index", "Home");
             if (!ModelState.IsValid)
                 return View(model);
 
@@ -82,7 +81,7 @@ namespace OnlinePizzaWebApplication.Controllers
                 if (result.Succeeded)
                 {
                     if (string.IsNullOrEmpty(model.ReturnUrl))
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("About", "Home");
 
                     return Redirect(model.ReturnUrl);
                 }
