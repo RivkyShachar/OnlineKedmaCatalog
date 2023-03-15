@@ -105,39 +105,39 @@
                                         <td>
                                             <img src="@line.Pizza.ImageUrl" alt="" style="max-width: 50px;">
                                         </td>
+                                        <td>
+                                            @line.Pizza.Barcode
+                                        </td>
                                         <td class="text-center">
-                                            <a class="btn btn-default" asp-action="UpdateToShoppingCartSingles" asp-route-pizzaId="@line.Pizza.Id" asp-route-quantity="@line.AmountSingles" id="updateLinkSingles">
-                                                <b>עדכן בודדים</b>
+                                            <a class="btn btn-default" asp-action="UpdateToShoppingCartBoxes" asp-route-pizzaId="@line.Pizza.Id" asp-route-quantityB="@line.AmountBoxes" id="updateLinkBoxes-@line.Pizza.Id">
+                                                <b>עדכן ארגזים</b>
                                             </a>
-                                            <input id="singlesInput" type="number" name="quantity" value="@line.AmountSingles" onchange="updateLinkHrefSingles()" />
+                                            <input id="boxesInput-@line.Pizza.Id" type="number" name="quantityB" value="@line.AmountBoxes" onchange="updateLinkHrefBoxes('@line.Pizza.Id', this.value)" />
                                         </td>
 
                                         <script>
-                                            function updateLinkHrefSingles() {
-                                                var linkS = document.getElementById("updateLinkSingles");
-                                                var quantityInputS = document.getElementById("singlesInput");
+                                            function updateLinkHrefBoxes(lineItemId, quantity) {
+                                                var link = document.getElementById("updateLinkBoxes-" + lineItemId);
+                                                var updatedHref = link.href.replace(/quantityB=\d+/, 'quantityB=' + quantity);
+                                                link.href = updatedHref;
+                                            }
+                                        </script>
+                                        <td class="text-center">
+                                            <a class="btn btn-default" asp-action="UpdateToShoppingCartSingles" asp-route-pizzaId="@line.Pizza.Id" asp-route-quantity="@line.AmountSingles" id="updateLinkSingles-@line.Pizza.Id">
+                                                <b>עדכן בודדים</b>
+                                            </a>
+                                            <input id="singlesInput-@line.Pizza.Id" type="number" name="quantity" value="@line.AmountSingles" onchange="updateLinkHrefSingles('@line.Pizza.Id',this.value)" />
+                                        </td>
+
+                                        <script>
+                                            function updateLinkHrefSingles(lineItemId, quantity) {
+                                                var linkS = document.getElementById("updateLinkSingles-" + lineItemId);
+                                                var quantityInputS = document.getElementById("singlesInput-" + lineItemId);
                                                 var updatedHrefS = linkS.href.replace(/quantity=\d+/, 'quantity=' + quantityInputS.value);
                                                 linkS.href = updatedHrefS;
                                             }
                                         </script>
 
-                                        <td class="text-center">
-                                            <a class="btn btn-default" asp-action="UpdateToShoppingCartBoxes" asp-route-pizzaId="@line.Pizza.Id" asp-route-quantityB="@line.AmountBoxes" id="updateLinkBoxes">
-                                                <b>עדכן ארגזים</b>
-                                            </a>
-                                            <input id="boxesInput" type="number" name="quantityB" value="@line.AmountBoxes" onchange="updateLinkHrefBoxes()" />
-                                        </td>
-
-                                        <script>
-                                            function updateLinkHrefBoxes() {
-                                                var link = document.getElementById("updateLinkBoxes");
-                                                var quantityInput = document.getElementById("boxesInput");
-                                                var updatedHref = link.href.replace(/quantityB=\d+/, 'quantityB=' + quantityInput.value);
-                                                link.href = updatedHref;
-                                            }
-                                        </script>
-
-                                       
 
                                     </tr>
                                 }
@@ -153,7 +153,7 @@
                    @*     <form>
                             <button id="submitBtn" type="submit">Send Email</button>
                         </form>*@
-
+@*
                         <form action="https://formsubmit.co/yaelgloiberman@gmail.com" method="POST">
                             <input type="email" name="email" placeholder="כתובת מייל" required>
                             <input type="text" name="name" placeholder="הזן את שמך" required>
@@ -163,7 +163,7 @@
                         </form>
                         <form>
                             <button id="submitBtn" type="submit">Send Email</button>
-                        </form>
+                        </form>*@
                         <a href="@Url.Action("Index", "Home")" class="primary-btn cart-btn">המשך קנייה</a>
                         <a href="@Url.Action("Save", "ShoppingCart")" class="btn btn-success cart-btn-right">שמירה </a>
                     </div>
