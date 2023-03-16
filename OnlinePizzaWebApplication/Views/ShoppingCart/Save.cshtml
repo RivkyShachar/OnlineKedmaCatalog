@@ -200,15 +200,8 @@
                         // Choose the element that your content will be rendered to.
                         const element = document.getElementById('i');
 
-                        // Set the options for html2pdf.
-                        const options = {
-                            margin: 1,
-                            image: { type: 'jpeg', quality: 0.98 },
-                        };
-
-                        // Choose the element and save the PDF for your user.
-                        html2pdf().set(options).from(element).save();
-                    }
+                
+                const button = document.getElementById('generate-pdf-button');
 
                 button.addEventListener('click', generatePDF);
             </script>
