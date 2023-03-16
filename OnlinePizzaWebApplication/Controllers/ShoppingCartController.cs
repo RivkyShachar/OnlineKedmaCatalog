@@ -275,6 +275,12 @@ namespace OnlinePizzaWebApplication.Controllers
         [HttpPost]
         public IActionResult SendEmail1(string pdfData)
         {
+            if (pdfData == null)
+            {
+                return BadRequest("PDF data cannot be null.");
+            }
+
+
             // Convert the PDF data from a Base64 string to a byte array.
             byte[] pdfBytes = Convert.FromBase64String(pdfData);
 

@@ -183,95 +183,97 @@
     /* Print styles */
   
 </style>
-            <div class="col-lg-12">
-                <button id="download-button" class="btn btn-success">Download as PDF</button>
-                <script>
-                    const button = document.getElementById('download-button');
+            
+            @*<div class="col-lg-12">
+				<button id="generate-pdf-button" class="btn btn-success">Generate PDF</button>
+                @*<button id="download-button" class="btn btn-success">שלח מייל</button>*@
+               @* <script>
+                const generatePDFButton = document.getElementById('generate-pdf-button');
 
-                    function generatePDF() {
-                        // Choose the element that your content will be rendered to.
-                        const element = document.getElementById('i');
+                
+                const button = document.getElementById('generate-pdf-button');
 
-                        // Set the options for html2pdf.
-                        const options = {
-                            margin: 1,
-                            image: { type: 'jpeg', quality: 0.98 },
-                        };
+                function generatePDF1() {
+                    // Choose the element that your content will be rendered to.
+                    const element = document.getElementById('i');
+                    // Choose the element and get the PDF data.
+                    
+                    html2pdf().from(element).outputPdf().then(function (pdf) {
+                        $(document).ready(function () {
+                            $("#generate-pdf-button").click(function (event) {
+                                event.preventDefault(); // prevent the default submit behavior
 
-                        // Choose the element and save the PDF for your user.
-                        html2pdf().set(options).from(element).save();
-                    }
-
-                button.addEventListener('click', generatePDF);
-            </script>
-                </div>
-                <button id="download-button" class="btn btn-success">שלח מייל</button>
-                <script>
-                    const button = document.getElementById('download-button');
-
-                    function generatePDF1() {
-                        // Choose the element that your content will be rendered to.
-                        const element = document.getElementById('i');
-                        // Choose the element and get the PDF data.
-                        html2pdf().from(element).outputPdf().then(function (pdf) {
-                            // Convert the PDF data to a Base64 string.
-                            const pdfData = btoa(String.fromCharCode.apply(null, new Uint8Array(pdf)));
-                            // Send the PDF data in an email.
-                            sendEmail1(pdfData);
-
+                                $.ajax({
+                                    type: "POST",
+                                    url: "/ShoppingCart/SendEmail1",
+                                    data: { pdfData: pdf },
+                                    success: function () {
+                                        alert("Email sent successfully!");
+                                    },
+                                    error: function () {
+                                        alert("Failed to send email.");
+                                    }
+                                });
+                            });
                         });
-                    }
-                    button.addEventListener('click', generatePDF1);
-                </script>
-                <form>
-                    <button id="submitBtn" type="submit">Send Email</button>
-                </form>
-                <form>
-                    <button id="submitBtn1" type="submit">Send Email1</button>
-                </form>
-            </div>
-            </div>
-    </section>
-        @section Scripts {
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script>
-            $(document).ready(function () {
-                $("#submitBtn").click(function (event) {
-                    event.preventDefault(); // prevent the default submit behavior
-
-                    $.ajax({
-                        type: "POST",
-                        url: "/ShoppingCart/SendEmail",
-                        success: function () {
-                            alert("Email sent successfully!");
-                        },
-                        error: function () {
-                            alert("Failed to send email.");
-                        }
                     });
-                });
-            }); 
-        </script>
-        <script>
-            $(document).ready(function () {
-                $("#submitBtn1").click(function (event) {
-                    event.preventDefault(); // prevent the default submit behavior
+                }
+                    generatePDFButton.addEventListener('click', generatePDF1);
+                </script>
+			</div>*@
+            </div>
+        <div class="col-lg-12">
+            <button id="generate-pdf-button" class="btn btn-success">Generate PDF</button>
+            <script>
+                const generatePDFButton = document.getElementById('generate-pdf-button');
+
+                function sendEmail(pdfData) {
+                    console.log('Preparing to send email...');
+                    console.log('pdf:', pdfData);
+                    const binaryString = String.fromCharCode.apply(null, new Uint8Array(pdfData));
+                    const base64String = btoa(binaryString);
                     $.ajax({
                         type: "POST",
                         url: "/ShoppingCart/SendEmail1",
-                        data: { pdfData: pdf.output('datauristring') }, // Pass the pdfData parameter
+                        data: { pdfData: base64String },
                         success: function () {
+                            console.log("Email sent successfully!");
                             alert("Email sent successfully!");
                         },
                         error: function () {
+                            console.log("Failed to send email.");
+                            console.log('pdf:', pdfData);
+                            console.log('pdf64:', base64String);
                             alert("Failed to send email.");
+
                         }
                     });
-                });
-            });
-        </script>
+                }
+
+                function generatePDF() {
+                    console.log('Generating PDF...');
+                    const element = document.getElementById('i');
+                    html2pdf().from(element).outputPdf().then(function (pdf) {
+                        console.log('PDF generation complete.');
+                        console.log('pdf:', pdf);
+                        sendEmail(pdf);
+                    });
+                }
+
+                generatePDFButton.addEventListener('click', generatePDF);
+            </script>
+        </div>
+
+
+
+
+
+            
+    </section>
+        @section Scripts {
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 }
 
 </body>
