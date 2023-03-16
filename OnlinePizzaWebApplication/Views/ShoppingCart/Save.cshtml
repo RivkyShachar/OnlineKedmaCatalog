@@ -191,12 +191,75 @@
 
                 button.addEventListener('click', generatePDF);
             </script>
-
                 </div>
+                <button id="download-button" class="btn btn-success">שלח מייל</button>
+                <script>
+                    const button = document.getElementById('download-button');
+
+                    function generatePDF1() {
+                        // Choose the element that your content will be rendered to.
+                        const element = document.getElementById('i');
+                        // Choose the element and get the PDF data.
+                        html2pdf().from(element).outputPdf().then(function (pdf) {
+                            // Convert the PDF data to a Base64 string.
+                            const pdfData = btoa(String.fromCharCode.apply(null, new Uint8Array(pdf)));
+                            // Send the PDF data in an email.
+                            sendEmail1(pdfData);
+
+                        });
+                    }
+                    button.addEventListener('click', generatePDF1);
+                </script>
+                <form>
+                    <button id="submitBtn" type="submit">Send Email</button>
+                </form>
+                <form>
+                    <button id="submitBtn1" type="submit">Send Email1</button>
+                </form>
             </div>
             </div>
     </section>
+        @section Scripts {
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("#submitBtn").click(function (event) {
+                    event.preventDefault(); // prevent the default submit behavior
+
+                    $.ajax({
+                        type: "POST",
+                        url: "/ShoppingCart/SendEmail",
+                        success: function () {
+                            alert("Email sent successfully!");
+                        },
+                        error: function () {
+                            alert("Failed to send email.");
+                        }
+                    });
+                });
+            }); 
+        </script>
+        <script>
+            $(document).ready(function () {
+                $("#submitBtn1").click(function (event) {
+                    event.preventDefault(); // prevent the default submit behavior
+                    $.ajax({
+                        type: "POST",
+                        url: "/ShoppingCart/SendEmail1",
+                        data: { pdfData: pdf.output('datauristring') }, // Pass the pdfData parameter
+                        success: function () {
+                            alert("Email sent successfully!");
+                        },
+                        error: function () {
+                            alert("Failed to send email.");
+                        }
+                    });
+                });
+            });
+        </script>
+}
 
 </body>
 

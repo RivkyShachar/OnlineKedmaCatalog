@@ -120,6 +120,7 @@ namespace OnlinePizzaWebApplication
                 pattern: "{controller=Home}/{action=Index}/{id?}");
 
             });
+
         }
     }
 }

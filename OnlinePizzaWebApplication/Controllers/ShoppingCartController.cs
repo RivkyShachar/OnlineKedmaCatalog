@@ -14,6 +14,7 @@ using Org.BouncyCastle.Asn1;
 using System.Collections.Specialized;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System.IO;
 
 namespace OnlinePizzaWebApplication.Controllers
 {
@@ -219,13 +220,12 @@ namespace OnlinePizzaWebApplication.Controllers
         public IActionResult SendEmail()
         {
            
-            string filePath = "C:\\Users\\yaeli\\Downloads\\file (5).pdf";
+            string filePath = "C:/Users/rivky/others Rivky/Software Developer-Rivka Shachar (3).pdf";
             // Create a System.Net.Mail.MailMessage object
             MailMessage message = new MailMessage();
 
             // Add a recipient
-            message.To.Add("ygloberm@g.jct.ac.il");
-            message.To.Add("rivkyvider@gmail.com");
+            message.To.Add("rvider@g.jct.ac.il");
 
 
             // Add a message subject
@@ -246,6 +246,62 @@ namespace OnlinePizzaWebApplication.Controllers
 
             // Attach the file
             Attachment attachment = new Attachment(filePath);
+            message.Attachments.Add(attachment);
+
+            // Create a System.Net.Mail.SmtpClient object
+            // and set the SMTP host and port number
+            SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
+
+            // If your server requires authentication add the below code
+            // =========================================================
+            // Enable Secure Socket Layer (SSL) for connection encryption
+            smtp.EnableSsl = true;
+
+            // Do not send the DefaultCredentials with requests
+            smtp.UseDefaultCredentials = false;
+
+            // Create a System.Net.NetworkCredential object and set
+            // the username and password required by your SMTP account
+            smtp.Credentials = new NetworkCredential("dronedrop2021@gmail.com", "ouiatjczzhkvtxnr");
+            // =========================================================
+
+            // Send the message
+            smtp.Send(message);
+
+            // Redirect to the previous page
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public IActionResult SendEmail1(string pdfData)
+        {
+            // Convert the PDF data from a Base64 string to a byte array.
+            byte[] pdfBytes = Convert.FromBase64String(pdfData);
+
+            // Create a System.Net.Mail.MailMessage object
+            MailMessage message = new MailMessage();
+
+            // Add a recipient
+            message.To.Add("rvider@g.jct.ac.il");
+
+            // Add a message subject
+            message.Subject = "Account activation";
+
+            // Add a message body
+            message.Body = "Hello customer" + "\n" +
+                "Welcome to Kedma.\n" +
+                "We are so happy you have chosen to join us  and  are sure you will enjoy our services.\n" +
+                "For any question, problems or requests you can contact our customer service team " +
+                "at customerService@DroneDrop.com and they will gladly assist you.\n\n" +
+                "Thank you and have a great day,\n" +
+                "Team DroneDrop";
+
+            // Create a System.Net.Mail.MailAddress object and 
+            // set the sender email address and display name.
+            message.From = new MailAddress("dronedrop2021@gmail.com", "DroneDrop");
+
+            // Attach the PDF
+            Attachment attachment = new Attachment(new MemoryStream(pdfBytes), "Document.pdf");
             message.Attachments.Add(attachment);
 
             // Create a System.Net.Mail.SmtpClient object

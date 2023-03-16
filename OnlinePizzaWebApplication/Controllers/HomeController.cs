@@ -1,17 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net.Mail;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using MimeKit;
 using OnlineKedmaWebApplication.ViewModels;
 using OnlinePizzaWebApplication.Data;
 using OnlinePizzaWebApplication.Models;
 using OnlinePizzaWebApplication.Repositories;
 using OnlinePizzaWebApplication.ViewModels;
+using MailKit;
+using MailKit.Net.Smtp;
+using MailKit.Security;
+using System.Net;
 
 namespace OnlinePizzaWebApplication.Controllers
 {
@@ -395,6 +402,106 @@ namespace OnlinePizzaWebApplication.Controllers
             {
                 ReturnUrl = returnUrl
             });
+        }
+
+        //public void sendEmail()
+        //{
+        //    var attachment = new Attachment(new MemoryStream(pdfBytes), PdfFileName); //this is from the articles referred above
+
+        //    MailMessage mailMessage = new MailMessage();
+        //    mailMessage.To.Add(new MailAddress("rvider@g.jct.ac.il"));
+        //    mailMessage.From = new MailAddress("rvider@g.jct.ac.il");
+        //    mailMessage.Subject = "my pdf attached";
+        //    mailMessage.Attachments.Add(attachment);
+
+        //    SmtpClient smtp = new SmtpClient();
+        //    smtp.Connect("smtp.gmail.com", 465, true);
+        //    smtp.Authenticate("emailAddress", "Pwd");
+        //    smtp.Send(mailMessage);
+        //}
+        public IActionResult SendEmailWithAttachment()
+        {
+            var message = new MimeMessage();
+            message.From.Add(new MailboxAddress("Sender Name", "sender@example.com"));
+            message.To.Add(new MailboxAddress("Recipient Name", "recipient@example.com"));
+            message.Subject = "Email Subject";
+
+            var pdfAttachment = new MimePart("application", "pdf")
+            {
+                Content = new MimeContent(System.IO.File.OpenRead("C:/Users/rivky/others Rivky/Software Developer-Rivka Shachar (3).pdf")),
+                ContentDisposition = new ContentDisposition(ContentDisposition.Attachment),
+                FileName = "filename.pdf"
+            };
+
+            var multipart = new Multipart("mixed");
+            multipart.Add(pdfAttachment);
+            message.Body = multipart;
+
+            using (var client = new MailKit.Net.Smtp.SmtpClient())
+            {
+                client.Connect("smtp.gmail.com", 587, SecureSocketOptions.StartTls);
+                client.Authenticate("yaeli12131415@gmail.com", "088582728");
+                client.Send(message);
+                client.Disconnect(true);
+            }
+            return Content("Email sent successfully");
+        }
+
+        [HttpPost]
+        public IActionResult SendEmail()
+        {
+
+            string filePath = "C:/Users/rivky/others Rivky/Software Developer-Rivka Shachar (3).pdf";
+            // Create a System.Net.Mail.MailMessage object
+            MailMessage message = new MailMessage();
+
+            // Add a recipient
+            message.To.Add("rvider@g.jct.ac.il");
+
+
+            // Add a message subject
+            message.Subject = "Account activation";
+
+            // Add a message body
+            message.Body = "Hello customer" + "\n" +
+                "Welcome to Kedma.\n" +
+                "We are so happy you have chosen to join us  and  are sure you will enjoy our services.\n" +
+                "For any question, problems or requests you can contact our customer service team " +
+                "at customerService@DroneDrop.com and they will gladly assist you.\n\n" +
+                "Thank you and have a great day,\n" +
+                "Team DroneDrop";
+
+            // Create a System.Net.Mail.MailAddress object and 
+            // set the sender email address and display name.
+            message.From = new MailAddress("dronedrop2021@gmail.com", "DroneDrop");
+
+            // Attach the file
+            Attachment attachment = new Attachment(filePath);
+            message.Attachments.Add(attachment);
+
+            // Create a System.Net.Mail.SmtpClient object
+            // and set the SMTP host and port number
+            System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient("smtp.gmail.com", 587);
+
+            // If your server requires authentication add the below code
+            // =========================================================
+            // Enable Secure Socket Layer (SSL) for connection encryption
+            smtp.EnableSsl = true;
+
+            // Do not send the DefaultCredentials with requests
+            smtp.UseDefaultCredentials = false;
+
+            // Create a System.Net.NetworkCredential object and set
+            // the username and password required by your SMTP account
+            smtp.Credentials = new NetworkCredential("dronedrop2021@gmail.com", "ouiatjczzhkvtxnr");
+            // =========================================================
+
+            // Send the message
+            smtp.Send(message);
+
+            // Redirect to the previous page
+            //return RedirectToAction("Index");
+            return Content("Email sent successfully");
         }
 
     }

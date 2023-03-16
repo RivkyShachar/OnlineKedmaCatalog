@@ -5,7 +5,7 @@
     var pageName = "Home page";
     ViewData["Title"] = pageName;
 }
-<html dir="rtl">
+<html lang="he" dir="rtl">
 
 <head>
     <meta charset="UTF-8">
@@ -27,6 +27,12 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+
+    <style type="text/css">
+        body {
+            direction: rtl;
+        }
+    </style>
 </head>
 
 <body>
@@ -83,16 +89,16 @@
  
     <section class="product spad">
 
-        <div class="container" dir="rtl">
+        <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-5">
-                    <div class="sidebar">
-                        <div class="sidebar__item" >
-                            <h4>קטגוריות</h4>
-                                <ul>
+                <div class="col-lg-3 col-md-5" dir="rtl">
+                    <div class="sidebar" dir="rtl">
+                        <div class="sidebar__item" dir="rtl" >
+                            <h4 dir="rtl">קטגוריות</h4>
+                                <ul dir="rtl">
                                 @foreach (var item in Model.Categories)
                                 {
-                                    <li><a asp-controller="Home" asp-action="CategoryA" asp-route-categoryId="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a></li>
+                                    <li dir="rtl"><a asp-controller="Home" asp-action="CategoryA" asp-route-categoryId="@item.Id" dir="rtl">@Html.DisplayFor(modelItem => item.Name)</a></li>
                                 }
                                 </ul>
                         </div>
