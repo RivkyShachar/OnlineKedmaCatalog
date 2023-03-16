@@ -106,6 +106,7 @@
                                 @foreach (var line in Model.ShoppingCart.ShoppingCartItems)
                                 {
                                     <tr>
+                                        
                                         <td class="text-center">
                                             <h5>@line.Pizza.Name</h5>
                                         </td>
@@ -160,6 +161,11 @@
                                                 linkS.href = updatedHrefS;
                                             }
                                         </script>
+                                        <td class="shoping__cart__item__close">
+                                            <a class="icon_close" asp-action="RemoveFromShoppingCart" asp-route-pizzaId="@line.Pizza.Id"></a>
+
+                                        </td>
+
                                     </tr>
                                 }
                             </tbody>
