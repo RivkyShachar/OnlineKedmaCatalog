@@ -5,9 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Views\ShoppingCart\itsGonnaWork.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Properties\PublishProfiles\OnlinePizzaWebApplication2 - Web Deploy.pubxml" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="IronOCR.Languages.Hebrew" Version="2020.11.2" />
     <PackageReference Include="iTextSharp" Version="5.5.13.3" />
     <PackageReference Include="MailKit" Version="3.6.0" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="7.0.3" />
@@ -18,9 +23,19 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Rotativa.AspNetCore" Version="1.2.0" />
+    <PackageReference Include="SendGrid" Version="9.28.1" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\PublishProfiles\" />
+  </ItemGroup>
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\ShoppingCart\itsGonnaWork.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\ShoppingCart\itsGonnaWork.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\ShoppingCart\itsGonnaWork.cshtml" />
   </ItemGroup>
 
 </Project>

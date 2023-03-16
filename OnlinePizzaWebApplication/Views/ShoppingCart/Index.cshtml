@@ -170,17 +170,20 @@
                                 }
                             </tbody>
                         </table>
+                       
 
                     </div>
                 </div>
             </div>
+
             <div class="row">
                 <div class="col-lg-12">
                     <div class="shoping__cart__btns">
-                        <form>
+                       
+                      @*  <form>
                             <button id="submitBtn" type="submit">Send Email</button>
                         </form>
-
+*@
 @*                        <form action="https://formsubmit.co/yaelgloiberman@gmail.com" method="POST">
                             <input type="email" name="email" placeholder="כתובת מייל" required>
                             <input type="text" name="name" placeholder="הזן את שמך" required>
@@ -201,42 +204,7 @@
             
     </section>
    
-    @section Scripts {
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script>
-            $(document).ready(function () {
-                $("#submitBtn").click(function (event) {
-                    event.preventDefault(); // prevent the default submit behavior
-
-                    $.ajax({
-                        type: "POST",
-                        url: "/ShoppingCart/SendEmail",
-                        success: function () {
-                            alert("Email sent successfully!");
-                        },
-                        error: function () {
-                            alert("Failed to send email.");
-                        }
-                    });
-                });
-            });
-       
-        </script>}
-        <script>
-            function addToCart(actionUrl, id, value) {
-                $.ajax({
-                    type: 'POST',
-                    url: actionUrl,
-                    data: { pizzaId: id, amount: value },
-                    success: function () {
-                        window.location.reload(); // reload the page after successful update
-                    },
-                    error: function () {
-                        alert('An error occurred while updating the shopping cart.');
-                    }
-                });
-            }
-        </script>
+ 
 
 
 </body>

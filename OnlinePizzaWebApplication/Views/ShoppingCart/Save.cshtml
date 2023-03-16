@@ -85,10 +85,7 @@
         <div class="container">
          
                 <style>
-          table {
-            width: 100%;
-            border-collapse: collapse;
-          }
+         
 
           th, td {
             border: 1px solid black;
@@ -110,10 +107,33 @@
             border-top: 1px solid black;
           }
 
-  
+           table {
+                    width: 80%;
+                    border-collapse: collapse;
+                }
+
+                th,
+                td {
+                    border: 1px solid black;
+                    padding: 10px;
+                    text-align: center;
+                    font-size: 14px;
+                }
+
+                    td:not(:last-child) {
+                        border-right: 1px solid black;
+                    }
+
+                th {
+                    background-color: lightgray;
+                    font-weight: bold;
+                }
+
+                
+                /* Print styles */
         </style>
 
-         <div class="row">
+ <div class="row">
     <div class="col-lg-12">
         <div class="shoping__cart__table" id="i">
             <table>
@@ -143,49 +163,37 @@
                         </tr>
                     }
                 </tbody>
-                <tfoot>
-                    <tr>
-                        <td colspan="5">&nbsp;</td>
-                    </tr>
-                </tfoot>
-            </table>
-        </div>
-    </div>
-</div>
+             </table>
+          </div>
+       </div>
+       </div>
 
-<style>
-    table {
-        width: 80%;
-        border-collapse: collapse;
-    }
 
-    th,
-    td {
-        border: 1px solid black;
-        padding: 10px;
-        text-align: center;
-        font-size: 14px;
-    }
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="shoping__cart__btns">
+                        <a asp-action="GeneratePdf">
+                            <button class="btn btn-success" type="submit"> Download Pdf</button>
+                        </a>
+                        <a asp-action="GeneratePdf">
+                            <button class="btn btn-success" type="submit"> בצע הזמנה</button>
+                        </a>
 
-    td:not(:last-child) {
-        border-right: 1px solid black;
-    }
+                    </div>
 
-    th {
-        background-color: lightgray;
-        font-weight: bold;
-    }
+                </div>
+            </div>
+            
 
-    table tfoot tr td {
-        border-top: 1px solid black;
-    }
+              @*  <a asp-action="GeneratePdf">
+                    <button id="submitBtn" type="submit">Send Email</button>
+                </a>
+            
+               *@
 
-    /* Print styles */
-  
-</style>
-            <div class="col-lg-12">
-                <button id="download-button" class="btn btn-success">Download as PDF</button>
-                <script>
+
+
+             @*   <script>
                     const button = document.getElementById('download-button');
 
                     function generatePDF() {
@@ -205,8 +213,8 @@
                 button.addEventListener('click', generatePDF);
             </script>
                 </div>
-                <button id="download-button" class="btn btn-success">שלח מייל</button>
-                <script>
+@*                <button id="download-button" class="btn btn-success">שלח מייל</button>
+               <script>
                     const button = document.getElementById('download-button');
 
                     function generatePDF1() {
@@ -222,14 +230,17 @@
                         });
                     }
                     button.addEventListener('click', generatePDF1);
+
                 </script>
-                <form>
+                @*<form>
                     <button id="submitBtn" type="submit">Send Email</button>
                 </form>
                 <form>
                     <button id="submitBtn1" type="submit">Send Email1</button>
                 </form>
-            </div>
+                          <button id="generate-pdf-button">Generate PDF</button>
+           
+            
             </div>
     </section>
         @section Scripts {
@@ -243,7 +254,7 @@
 
                     $.ajax({
                         type: "POST",
-                        url: "/ShoppingCart/SendEmail",
+                        url: "/ShoppingCart/Execute",
                         success: function () {
                             alert("Email sent successfully!");
                         },
@@ -256,12 +267,35 @@
         </script>
         <script>
             $(document).ready(function () {
-                $("#submitBtn1").click(function (event) {
+                     unction generatePDF1() {
+                    // Choose the element that your content will be rendered to.
+                    const element = document.getElementById('i');
+                    // Choose the element and get the PDF data.
+                    html2pdf().from(element).outputPdf().then(function (pdf) {
+                        $("#generate-pdf-button").click(function (event) {
                     event.preventDefault(); // prevent the default submit behavior
                     $.ajax({
                         type: "POST",
                         url: "/ShoppingCart/SendEmail1",
-                        data: { pdfData: pdf.output('datauristring') }, // Pass the pdfData parameter
+                        data: { pdfData: pdf },
+                        success: function () {
+                            alert("Email sent successfully!");
+                        },
+                        error: function () {
+                            alert("Failed to send email.");
+                        }
+                    });
+                });
+            }
+        </script>
+        <script>
+            $(document).ready(function () {
+                $("#submitBtn1").click(function (event) {
+                    event.preventDefault(); // prevent the default submit behavior
+                        $.ajaxSendEmail
+                        type: "POST",
+                        url: "/ShoppingCart/SendEmail1",
+                        data: { pdfData: pdfData }, // Pass the pdfData parameter
                         success: function () {
                             alert("Email sent successfully!");
                         },
@@ -271,8 +305,44 @@
                     });
                 });
             });
-        </script>
+        </script>*@
+            @section Scripts {
+                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                <script>
+                    $(document).ready(function () {
+                        $("#submitBtn").click(function (event) {
+                            event.preventDefault(); // prevent the default submit behavior
+
+                            $.ajax({
+                                type: "POST",
+                                url: "/ShoppingCart/SendMailShira",
+                                success: function () {
+                                    alert("Email sent successfully!");
+                                },
+                                error: function () {
+                                    alert("Failed to send email.");
+                                }
+                            });
+                        });
+                    });
+
+                </script>
 }
+            <script>
+                function addToCart(actionUrl, id, value) {
+                    $.ajax({
+                        type: 'POST',
+                        url: actionUrl,
+                        data: { pizzaId: id, amount: value },
+                        success: function () {
+                            window.location.reload(); // reload the page after successful update
+                        },
+                        error: function () {
+                            alert('An error occurred while updating the shopping cart.');
+                        }
+                    });
+                }
+            </script>
 
 </body>
 
