@@ -1891,7 +1891,6 @@ ol {
 
 .shoping__cart__table {
 	margin-bottom: 30px;
-
 }
 
 	.shoping__cart__table table {
@@ -3435,45 +3434,72 @@ ol {
 	.hero__search__form form .hero__search__categories {
 		display: none;
 	}
+
 	.featured__controls ul li {
 		margin-bottom: 10px;
 	}
+
 	.product__details__text ul li b {
 		width: 100px;
 	}
+
 	.product__details__tab .nav-tabs li {
 		margin-right: 20px;
 	}
+
 	.shoping__cart__btns {
 		text-align: center;
 	}
+
 	.primary-btn.cart-btn.cart-btn-right {
 		float: none;
 		margin-top: 10px;
 	}
+
 	.shoping__checkout .primary-btn {
 		display: block;
 		text-align: center;
 		padding: 10px 15px 10px;
 	}
+
 	.map .map-inside {
 		-webkit-transform: translateX(-125px);
 		-ms-transform: translateX(-125px);
 		transform: translateX(-125px);
 	}
-	.map .map-inside .inside-widget {
-		width: 250px;
-	}
+
+		.map .map-inside .inside-widget {
+			width: 250px;
+		}
+
 	.product__details__tab .nav-tabs li {
 		margin-right: 15px;
 	}
+
 	.shoping__discount form input {
 		width: 100%;
 	}
+
 	.checkout__order {
 		padding: 20px;
 	}
+
 	.blog__details__hero__text h2 {
 		font-size: 24px;
+	}
+
+	@media print {
+		table {
+			width: 100%;
+		}
+
+		td,
+		th {
+			font-size: 10px;
+		}
+
+		tfoot {
+			page-break-before: always;
+		}
 	}
 }

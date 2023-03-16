@@ -141,8 +141,7 @@
             </div>
             </div>
     </section>
-
-    
+  
     <!-- Js Plugins -->
     <script src="~/js/jquery-3.3.1.min.js"></script>
     <script src="~/js/bootstrap.min.js"></script>
@@ -156,4 +155,20 @@
 
 
 </body>
+<script>
+    // Save the scroll position
+    window.addEventListener('beforeunload', function () {
+        sessionStorage.setItem('scrollPosition', window.pageYOffset);
+    });
+
+    // Restore the scroll position
+    window.addEventListener('load', function () {
+        var scrollPosition = sessionStorage.getItem('scrollPosition');
+        if (scrollPosition !== null) {
+            window.scrollTo(0, scrollPosition);
+            sessionStorage.removeItem('scrollPosition');
+        }
+    });
+
+</script>
 </html>

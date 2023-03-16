@@ -184,15 +184,7 @@ namespace OnlinePizzaWebApplication.Models
 
             if (shoppingCartItem != null)
             {
-                if (shoppingCartItem.AmountBoxes > 1)
-                {
-                    shoppingCartItem.AmountBoxes--;
-                    localAmount = shoppingCartItem.AmountBoxes;
-                }
-                else
-                {
-                    _appDbContext.ShoppingCartItems.Remove(shoppingCartItem);
-                }
+                    _appDbContext.ShoppingCartItems.Remove(shoppingCartItem);   
             }
 
             await _appDbContext.SaveChangesAsync();
