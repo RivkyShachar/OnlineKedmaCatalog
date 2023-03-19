@@ -177,16 +177,16 @@
                         <a asp-action="GeneratePdf">
                             <button class="btn btn-success" type="submit"> Download Pdf</button>
                         </a>
-                        <a asp-action="GeneratePdf">
+@*                        <a asp-action="GeneratePdf">
                             <button class="btn btn-success" id="submitBtn" type="submit"> בצע הזמנה</button>
-                        </a>
+                        </a>*@
 
                     </div>
 
                 </div>
             </div>
 
-            <button onclick="document.getElementById('modal').style.display='block'" class="btn btn-success">Save and Generate PDF</button>
+@*            <button onclick="document.getElementById('modal').style.display='block'" class="btn btn-success">Save and Generate PDF</button>
 
             <div id="modal" style="display:none">
                 <form asp-action="GeneratePdf1">
@@ -200,13 +200,30 @@
                     <input type="text" id="notes" name="notes"><br><br>
                     <button class="btn btn-success" type="submit">Submit</button>
                 </form>
+            </div>*@
+
+            <button onclick="document.getElementById('modal').style.display='block'" class="btn btn-success">בצע הזמנה</button>
+
+            <div id="modal" style="display:none">
+                <form>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name"><br><br>
+                    <label for="phone">Phone:</label>
+                    <input type="text" id="phone" name="phone"><br><br>
+                    <label for="email">Email:</label>
+                    <input type="text" id="email" name="email"><br><br>
+                    <label for="notes">Notes:</label>
+                    <input type="text" id="notes" name="notes"><br><br>
+                    <button class="btn btn-success" id="sendBtn" type="submit">Submit</button>
+                </form>
             </div>
+
 </div>
 
 
             @section Scripts {
                 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-                <script>
+@*                <script>
                     $(document).ready(function () {
                         $("#submitBtn").click(function (event) {
                             event.preventDefault(); // prevent the default submit behavior
@@ -224,7 +241,39 @@
                         });
                     });
 
-                </script>
+                </script>*@
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script>
+                $(document).ready(function () {
+                    $("#sendBtn").click(function (event) {
+                        event.preventDefault(); // prevent the default submit behavior
+
+                        // get input values
+                        var name = $("#name").val();
+                        var phone = $("#phone").val();
+                        var email = $("#email").val();
+                        var notes = $("#notes").val();
+
+                        $.ajax({
+                            type: "POST",
+                            url: "/ShoppingCart/GenerateAndSendPdf1",
+                            data: {
+                                name: name,
+                                phone: phone,
+                                email: email,
+                                notes: notes
+                            },
+                            success: function () {
+                                alert("Email sent successfully!");
+                            },
+                            error: function () {
+                                alert("Failed to send email.");
+                            }
+                        });
+                    });
+                });
+            </script>
+
 }
             <script>
                 function addToCart(actionUrl, id, value) {
