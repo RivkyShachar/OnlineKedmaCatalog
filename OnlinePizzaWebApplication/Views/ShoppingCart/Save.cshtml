@@ -185,11 +185,11 @@
             </div>
             
 
-              @*  <a asp-action="GeneratePdf">
+                <a asp-action="GeneratePdf">
                     <button id="submitBtn" type="submit">Send Email</button>
                 </a>
             
-               *@
+               
 
 
 
@@ -308,7 +308,7 @@
 
                             $.ajax({
                                 type: "POST",
-                                url: "/ShoppingCart/SendMailShira",
+                                url: "/ShoppingCart/GenerateAndSendPdf",
                                 success: function () {
                                     alert("Email sent successfully!");
                                 },
